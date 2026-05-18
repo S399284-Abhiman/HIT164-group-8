@@ -8,8 +8,8 @@
 - Pages
     - Home
         - Search bar
-    - Welcome to country
-        - Contact
+        - Welcome to country
+    - Contact
         - Popup contact option
     - News
         - Popup news pages
