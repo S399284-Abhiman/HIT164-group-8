@@ -1,0 +1,83 @@
+This is sorted as best as I could.
+I suggest just using <ctrl-f> or equivalent to search through the list if you want to find a specific tag.
+# HTML Tags
+- style
+- head
+    - meta
+        - charset
+    - link
+        - rel
+        - href
+    - title
+- body
+    - h*n* (heading *n*, e.g. h1)
+    - hr (horizontal ruled line)
+    - div
+        - img (image)
+    - p (paragraph)
+        - del (strikethrough)
+        - ins (underline)
+        - sup (superscript)
+        - abbr (abbreviation)
+        - b (bold)
+        - u (underline)
+        - ol (ordered list)
+        - ul (unordered list)
+        - li (list element)
+        - a (anchor)
+            - href (hypertext reference (link))
+            - target
+        - br (break (newline))
+    - address
+- blockquote
+    - cite
+    - i (italic)
+    - q (quote)
+- pre (preformatted text)
+- figure
+    - figcaption
+        - class
+        - id
+- button
+    - onclick -> js function
+- input
+    - type
+    - id
+    - placeholder
+- audio
+    - controls
+    - source
+        - src
+        - type
+- video
+    - width
+    - height
+    - controls
+    - source
+        - src
+        - type
+- nav
+    - a (anchor)
+        - href (hypertext reference)
+- map
+    - area
+        - shape
+        - coords
+        - alt
+        - href
+        - target
+- code
+- label
+    - for
+- meter
+    - id
+    - value
+    - min
+    - max
+- table
+    - tr (table row)
+        - th (table header)
+        - td (table data)
+
+# CSS Properties
+- See 'CSS-CheatSheet.pdf' on Week 7 study materials
