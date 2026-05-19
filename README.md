@@ -6,18 +6,18 @@
 ----------
 # Educational Institution
 - Pages
-    - Home
+    - Home      > Everyone
         - Search bar
         - Welcome to country
-    - Contact
+    - Contact   > Abhiman
         - Popup contact option
-    - News
+    - News      > TJ
         - Popup news pages
-    - About us
+    - About us  > Binit
         - Calendar popup
-    - Study
-    - Research
-    - Partners
+    - Study     > Abhiman
+    - Research  > TJ
+    - Partners  > Binit
 
 - Report
     - Write the report
