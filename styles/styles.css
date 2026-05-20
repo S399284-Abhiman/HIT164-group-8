@@ -22,8 +22,22 @@
     --purple-800:   #2f1d3f;
     --purple-900:   #231a2c;
     --purple-light: #962a8b;
-
     --purple-gradient: linear-gradient(90deg, var(--purple-500) 0%, 87%, var(--purple-light) 100%);
+    --white:        #ffffff;
+    --off-white:    #F7F4F2;
+    --grey-light:   #E8E4E0;
+    --grey-mid:     #B0A8A0;
+    --grey-dark:    #3D3935;
+    --text:         #1A1A1A;
+    --link:         #51247A;
+    --nav-height:    70px;
+    --font-heading:  Georgia, 'Times New Roman', serif;
+    --font-body:     'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --transition:    0.3s ease;
+    --shadow:        0 2px 12px rgba(81,36,122,0.12);
+    --shadow-lg:     0 6px 30px rgba(81,36,122,0.18);
+
+
 }
 
 body {
