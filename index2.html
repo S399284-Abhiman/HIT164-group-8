@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University of Students</title>
+    <link rel="stylesheet" href="styles/styles2.css">
+    <style>
+        .hero-section {
+            position: relative;
+            height: 540px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, var(--purple-500) 0%, #2d0f4e 50%, var(--purple-light) 100%);
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: rgba(187,157,101,0.10);
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; left: 30%;
+            width: 260px; height: 260px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+        }
+        .hero-overlay {
+            position: relative;
+            z-index: 2;
+            padding: 0 60px;
+            max-width: 700px;
+        }
+        .hero-overlay h1 {
+            color: var(--white);
+            font-size: 3rem;
+            margin-bottom: 18px;
+            line-height: 1.15;
+        }
+        .hero-overlay p {
+            color: rgba(255,255,255,0.84);
+            font-size: 1.15rem;
+            margin-bottom: 34px;
+        }
+        .hero-badges {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .hero-badge {
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 40px;
+            padding: 6px 18px;
+            color: var(--white);
+            font-size: 0.86rem;
+        }
+        .search-bar {
+            background-color: var(--off-white);
+            border-bottom: 1px solid var(--grey-light);
+            padding: 18px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .search-bar input[type="search"] {
+            width: 100%;
+            max-width: 520px;
+            padding: 11px 18px;
+            border: 2px solid var(--grey-light);
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 0.98rem;
+            outline: none;
+            font-family: var(--font-body);
+            transition: border-color var(--transition);
+        }
+        .search-bar input[type="search"]:focus { border-color: var(--purple-500); }
+        .search-bar button {
+            padding: 11px 22px;
+            background-color: var(--purple-500);
+            color: var(--white);
+            border: 2px solid var(--purple-500);
+            border-radius: 0 4px 4px 0;
+            font-size: 0.98rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--transition);
+            font-family: var(--font-body);
+        }
+        .search-bar button:hover { background-color: #3d1a5e; border-color: #3d1a5e; }
+        .country-banner {
+            background-color: var(--purple-500);
+            color: var(--white);
+            text-align: center;
+            padding: 20px 40px;
+            font-size: 0.92rem;
+        }
+        .country-banner p { max-width: 820px; margin: 0 auto; opacity: 0.90; line-height: 1.7; }
+        .country-banner strong { color: var(--purple-50); }
+        .strip-section { padding: 64px 40px 0; max-width: 1140px; margin: 0 auto; }
+        .strip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+        }
+        .level-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+        .level-card {
+            display: block;
+            text-decoration: none;
+            background: var(--white);
+            border: 2px solid var(--grey-light);
+            border-radius: 8px;
+            padding: 28px 22px;
+            text-align: center;
+            transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+            color: inherit;
+        }
+        .level-card:hover {
+            border-color: var(--purple-dark);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            text-decoration: none;
+            color: inherit;
+        }
+        .level-card-icon {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            background: var(--purple-light);
+            margin: 0 auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .level-card-icon svg {
+            width: 22px; height: 22px;
+            stroke: var(--purple-500);
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .level-card h3 {
+            font-size: 0.98rem;
+            font-family: var(--font-body);
+            font-weight: 700;
+            color: var(--purple-dark);
+            margin-bottom: 5px;
+        }
+        .level-card p { font-size: 0.82rem; color: var(--grey-mid); }
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 70px;
+        }
+        .faculty-card {
+            display: block;
+            text-decoration: none;
+            border-radius: 8px;
+            padding: 28px 24px;
+            color: inherit;
+            position: relative;
+            background: var(--white);
+            border: 2px solid var(--grey-light);
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+        }
+        .faculty-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); text-decoration: none; color: inherit; border-color: var(--purple-dark); }
+        .faculty-card h3 {
+            font-size: 1.05rem;
+            font-family: var(--font-body);
+            font-weight: 700;
+            color: var(--purple-dark);
+            margin-bottom: 5px;
+        }
+        .faculty-card p { font-size: 0.82rem; color: var(--grey-mid); }
+        .faculty-arrow {
+            position: absolute;
+            bottom: 20px; right: 22px;
+            font-size: 1rem;
+            color: var(--purple-50);
+            opacity: 0.7;
+            transition: opacity var(--transition), transform var(--transition);
+        }
+        .faculty-card:hover .faculty-arrow { opacity: 1; transform: translateX(5px); }
+        .about-section { display: grid; grid-template-columns: 1fr 1fr; }
+        .about-text { padding: 70px 56px; background: var(--white); }
+        .about-text p { color: var(--grey-dark); font-size: 1.02rem; margin-bottom: 18px; line-height: 1.75; }
+        .about-image { background: linear-gradient(145deg, var(--purple-light), var(--purple-500)); min-height: 360px; overflow: hidden; }
+        .about-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.65; mix-blend-mode: luminosity; }
+        .stats-section {
+            background-color: var(--purple-500);
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+            gap: 20px;
+        }
+        .stat-item h2 { color: var(--purple-50); font-size: 2.8rem; margin-bottom: 6px; }
+        .stat-item p { color: rgba(255,255,255,0.72); font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.8px; }
+        .news-strip { padding: 70px 40px; background-color: var(--off-white); }
+        .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+        .news-card {
+            background: var(--white);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform var(--transition), box-shadow var(--transition);
+            cursor: pointer;
+        }
+        .news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .news-card-img {
+            height: 160px;
+            background: linear-gradient(135deg, var(--purple-500), var(--purple-light));
+            display: flex; align-items: center; justify-content: center;
+        }
+        .news-card-img svg { width: 44px; height: 44px; stroke: rgba(255,255,255,0.45); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+        .news-card-body { padding: 22px; }
+        .news-tag {
+            display: inline-block;
+            background-color: var(--purple-light);
+            color: var(--purple-500);
+            font-size: 0.72rem; font-weight: 700;
+            padding: 3px 10px; border-radius: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase; letter-spacing: 0.6px;
+        }
+        .news-card-body h3 { font-size: 0.98rem; font-family: var(--font-body); font-weight: 700; margin-bottom: 8px; color: var(--text); line-height: 1.45; }
+        .news-date { font-size: 0.8rem; color: var(--grey-mid); }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-logo">UoS <span style="color:var(--gold)">Australia</span></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="study.html">Study</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="partners.html">Partners</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay">
+            <h1 class="hero-reveal">Shaping Tomorrow's Leaders</h1>
+            <p class="hero-reveal hero-reveal-delay-1">University of Students — where world-class research meets transformative education in the heart of Australia.</p>
+            <div class="hero-reveal hero-reveal-delay-2" style="display:flex; gap:14px; flex-wrap:wrap;">
+                <a href="study.html" class="btn btn-primary">Explore Programs</a>
+                <a href="about.html" class="btn btn-outline" style="color:var(--white); border-color:rgba(255,255,255,0.45);">Our Story</a>
+            </div>
+            <div class="hero-badges hero-reveal hero-reveal-delay-3">
+                <span class="hero-badge">Top 50 Globally</span>
+                <span class="hero-badge">Research Intensive</span>
+                <span class="hero-badge">55,000+ Students</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="search-bar">
+        <input type="search" placeholder="Search programs, research, people…" id="siteSearch" />
+        <button>Search</button>
+    </div>
+
+    <div class="country-banner">
+        <p>University of Students acknowledges the traditional custodians across the lands on which we live and work, and we pay our respects to Elders past, present and emerging,   and recognise the connection Aboriginal and Torres Strait Islander peoples have with this land.</p>
+    </div>
+
+
+
+    <!-- Study Levels -->
+    <div class="strip-section">
+        <div class="strip-header reveal">
+            <div>
+                <div class="gold-bar"></div>
+                <h2 class="section-title">Study at UoS</h2>
+                <p class="section-subtitle">Choose your level and find the right program for you.</p>
+            </div>
+            <a href="study.html" class="btn btn-outline">All Programs</a>
+        </div>
+
+        <div class="level-strip">
+            <a href="study.html?level=undergraduate" class="level-card reveal">
+                <div class="level-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/></svg>
+                </div>
+                <h3>Undergraduate</h3>
+                <p>Bachelor degrees &amp; diplomas</p>
+            </a>
+            <a href="study.html?level=postgraduate" class="level-card reveal reveal-delay-1">
+                <div class="level-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <h3>Postgraduate</h3>
+                <p>Masters &amp; graduate certificates</p>
+            </a>
+            <a href="study.html?level=phd" class="level-card reveal reveal-delay-2">
+                <div class="level-card-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                </div>
+                <h3>PhD &amp; Research</h3>
+                <p>Doctoral &amp; research programs</p>
+            </a>
+            <a href="study.html?level=online" class="level-card reveal reveal-delay-3">
+                <div class="level-card-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                </div>
+                <h3>Online &amp; Flexible</h3>
+                <p>Study from anywhere, anytime</p>
+            </a>
+        </div>
+    
+
+
+        <!-- Faculties -->
+        <div class="strip-header reveal">
+            <div>
+                <div class="gold-bar"></div>
+                <h2 class="section-title">Browse by Faculty</h2>
+                <p class="section-subtitle">Explore programs within your area of interest.</p>
+            </div>
+        </div>
+
+        <div class="faculty-grid">
+            <a href="study.html?faculty=science" class="faculty-card reveal">
+                <h3>Science &amp; Engineering</h3>
+                <p>42 programs available</p>
+                <span class="faculty-arrow">&#8594;</span>
+            </a>
+            <a href="study.html?faculty=tech" class="faculty-card reveal reveal-delay-1">
+                <h3>Technology &amp; IT</h3>
+                <p>35 programs available</p>
+                <span class="faculty-arrow">&#8594;</span>
+            </a>
+            <a href="study.html?faculty=business" class="faculty-card reveal reveal-delay-2">
+                <h3>Business &amp; Economics</h3>
+                <p>44 programs available</p>
+                <span class="faculty-arrow">&#8594;</span>
+            </a>
+            <a href="study.html?faculty=health" class="faculty-card reveal reveal-delay-3">
+                <h3>Health &amp; Medicine</h3>
+                <p>29 programs available</p>
+                <span class="faculty-arrow">&#8594;</span>
+            </a>
+            <a href="study.html?faculty=arts" class="faculty-card reveal reveal-delay-4">
+                <h3>Arts &amp; Humanities</h3>
+                <p>38 programs available</p>
+                <span class="faculty-arrow">&#8594;</span>
+            </a>
+            <a href="study.html?faculty=law" class="faculty-card reveal reveal-delay-5">
+                <h3>Law &amp; Justice</h3>
+                <p>18 programs available</p>
+                <span class="faculty-arrow">&#8594;</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="country-banner">
+        <p>Enjoy things not going according to plan. If you knew the ending it wouldn't be worth the watch. No good story happens from things going right.</p>
+    </div>
+    <br><br>
+
+
+
+    <!-- About -->
+    <section class="about-section" id="about">
+        <div class="about-text">
+            <div class="gold-bar reveal"></div>
+            <h2 class="section-title reveal">About Our University</h2>
+            <p class="reveal reveal-delay-1">Attendance at the University of Students is a privilege. Should you be selected, you will be guaranteed a job in your field after graduation, courtesy of our close ties with recruitment agencies and the extremely high quality of our globally-recognised education.</p>
+            <p class="reveal reveal-delay-2">Founded with a vision of accessible, excellent education, we welcome students from all walks of life to join a community that thrives on curiosity, collaboration, and courage.</p>
+            <a href="about.html" class="btn btn-outline reveal reveal-delay-3" style="margin-top:10px; display:inline-block;">Learn More</a>
+        </div>
+        <div class="about-image">
+            <img src="images/bookshelf.jpg" alt="University library bookshelf">
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-section" id="stats">
+        <div class="stat-item reveal">
+            <h2 class="counter" data-target="55000" data-suffix="+">0</h2>
+            <p>Enrolled Students</p>
+        </div>
+        <div class="stat-item reveal reveal-delay-1">
+            <h2 class="counter" data-target="200" data-suffix="+">0</h2>
+            <p>Programs Offered</p>
+        </div>
+        <div class="stat-item reveal reveal-delay-2">
+            <h2 class="counter" data-target="50" data-prefix="Top ">0</h2>
+            <p>Global Ranking</p>
+        </div>
+        <div class="stat-item reveal reveal-delay-3">
+            <h2 class="counter" data-target="1912">0</h2>
+            <p>Year Established</p>
+        </div>
+    </section>
+
+    <!-- News -->
+    <section class="news-strip" id="news">
+        <div style="max-width:1140px; margin:0 auto; padding:0;">
+            <div class="strip-header reveal">
+                <div>
+                    <div class="gold-bar"></div>
+                    <h2 class="section-title">Latest News</h2>
+                </div>
+                <a href="news.html" class="btn btn-outline">All News</a>
+            </div>
+            <div class="news-grid">
+                <div class="news-card reveal">
+                    <div class="news-card-img">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-5 0-8 2-8 3v1h16v-1c0-1-3-3-8-3z"/></svg>
+                    </div>
+                    <div class="news-card-body">
+                        <span class="news-tag">Research</span>
+                        <h3>UoS Scientists Awarded National Research Grant</h3>
+                        <p class="news-date">May 12, 2026</p>
+                    </div>
+                </div>
+                <div class="news-card reveal reveal-delay-1">
+                    <div class="news-card-img">
+                        <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/></svg>
+                    </div>
+                    <div class="news-card-body">
+                        <span class="news-tag">Graduation</span>
+                        <h3>Class of 2026 Graduation Ceremony Announced</h3>
+                        <p class="news-date">May 8, 2026</p>
+                    </div>
+                </div>
+                <div class="news-card reveal reveal-delay-2">
+                    <div class="news-card-img">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <div class="news-card-body">
+                        <span class="news-tag">Partnerships</span>
+                        <h3>New International Exchange Programs Open for 2027</h3>
+                        <p class="news-date">April 30, 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Study</h3>
+                <ul>
+                    <li><a href="study.html">Programs</a></li>
+                    <li><a href="study.html?level=undergraduate">Undergraduate</a></li>
+                    <li><a href="study.html?level=postgraduate">Postgraduate</a></li>
+                    <li><a href="study.html?level=online">Online &amp; Flexible</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Research</h3>
+                <ul>
+                    <li><a href="research.html">Research Areas</a></li>
+                    <li><a href="research.html#institutes">Institutes</a></li>
+                    <li><a href="research.html#funding">Funding</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 University of Students. All rights reserved.</p>
+            <p>ABN 00 000 000 000 &nbsp;|&nbsp; CRICOS Provider 00000A</p>
+        </div>
+    </footer>
+
+    <script>
+        /* Scroll-reveal (forward + reverse) */
+        var revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(function(el) {
+            revealObserver.observe(el);
+        });
+
+        /* Counter animation — replays every time stats scroll into view */
+        var countersRunning = false;
+
+        var counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !countersRunning) {
+                    countersRunning = true;
+                    runCounters();
+                }
+                if (!entry.isIntersecting) {
+                    countersRunning = false;
+                    document.querySelectorAll('.counter').forEach(function(el) {
+                        el.textContent = '0';
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        var statsEl = document.getElementById('stats');
+        if (statsEl) { counterObserver.observe(statsEl); }
+
+        function runCounters() {
+            document.querySelectorAll('.counter').forEach(function(el) {
+                var target   = parseInt(el.getAttribute('data-target'), 10);
+                var prefix   = el.getAttribute('data-prefix') || '';
+                var suffix   = el.getAttribute('data-suffix') || '';
+                var duration = 2000;
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var elapsed  = timestamp - startTime;
+                    var progress = Math.min(elapsed / duration, 1);
+                    var ease     = 1 - Math.pow(1 - progress, 3);
+                    var value    = Math.floor(ease * target);
+                    el.textContent = prefix + value.toLocaleString() + suffix;
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        el.textContent = prefix + target.toLocaleString() + suffix;
+                    }
+                }
+                requestAnimationFrame(step);
+            });
+        }
+    </script>
+</body>
+</html>
