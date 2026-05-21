@@ -1,50 +1,487 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to University of Students</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News — University of Students</title>
+    <link rel="stylesheet" href="../styles/styles2.css">
+    <style>
+        .hero-section {
+            position: relative;
+            height: 540px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, var(--purple-500) 0%, #2d0f4e 50%, var(--purple-light) 100%);
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: rgba(187,157,101,0.10);
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; left: 30%;
+            width: 260px; height: 260px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+        }
+        .hero-overlay {
+            position: relative;
+            z-index: 2;
+            padding: 0 60px;
+            max-width: 700px;
+        }
+        .hero-overlay h1 {
+            color: var(--white);
+            font-size: 3rem;
+            margin-bottom: 18px;
+            line-height: 1.15;
+        }
+        .hero-overlay p {
+            color: rgba(255,255,255,0.84);
+            font-size: 1.15rem;
+            margin-bottom: 34px;
+        }
+        .hero-badges {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .hero-badge {
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 40px;
+            padding: 6px 18px;
+            color: var(--white);
+            font-size: 0.86rem;
+        }
+        .search-bar {
+            background-color: var(--off-white);
+            border-bottom: 1px solid var(--grey-light);
+            padding: 18px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .search-bar input[type="search"] {
+            width: 100%;
+            max-width: 520px;
+            padding: 11px 18px;
+            border: 2px solid var(--grey-light);
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 0.98rem;
+            outline: none;
+            font-family: var(--font-body);
+            transition: border-color var(--transition);
+        }
+        .search-bar input[type="search"]:focus { border-color: var(--purple-500); }
+        .search-bar button {
+            padding: 11px 22px;
+            background-color: var(--purple-500);
+            color: var(--white);
+            border: 2px solid var(--purple-500);
+            border-radius: 0 4px 4px 0;
+            font-size: 0.98rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--transition);
+            font-family: var(--font-body);
+        }
+        .search-bar button:hover { background-color: #3d1a5e; border-color: #3d1a5e; }
+        .country-banner {
+            background-color: var(--purple-500);
+            color: var(--white);
+            text-align: center;
+            padding: 20px 40px;
+            font-size: 0.92rem;
+        }
+        .country-banner p { max-width: 820px; margin: 0 auto; opacity: 0.90; line-height: 1.7; }
+        .country-banner strong { color: var(--purple-50); }
+        .strip-section { padding: 64px 40px 0; max-width: 1140px; margin: 0 auto; }
+        .strip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+        }
+        .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+        .news-card {
+            background: var(--white);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform var(--transition), box-shadow var(--transition);
+            cursor: pointer;
+        }
+        .news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .news-card-img {
+            height: 160px;
+            background: linear-gradient(135deg, var(--purple-500), var(--purple-light));
+            display: flex; align-items: center; justify-content: center;
+        }
+        .news-card-img svg { width: 44px; height: 44px; stroke: rgba(255,255,255,0.45); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+        .news-card-body { padding: 22px; }
+        .news-tag {
+            display: inline-block;
+            background-color: var(--purple-light);
+            color: var(--purple-500);
+            font-size: 0.72rem; font-weight: 700;
+            padding: 3px 10px; border-radius: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase; letter-spacing: 0.6px;
+        }
+        .news-card-body h3 { font-size: 0.98rem; font-family: var(--font-body); font-weight: 700; margin-bottom: 8px; color: var(--text); line-height: 1.45; }
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size:0.8rem;
+            color: var(--grey-mid);
+        }
+        .news-meta-text {
+            font-size:0.8rem;
+            color: var(--grey-mid);
+        }
+
+        /* Articles */
+        .articles-container {
+            display: grid;
+            gap: 0 32px;
+        }
+        .articles-left,
+        .articles-right {
+            grid-row: 1 / span 1;
+        }
+        .article-left,
+        .article-right {
+            display: block;
+            text-decoration: none;
+            border: 2px solid transparent;
+            border-radius: 6px;
+            transition: transform var(--transition), box-shadow var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .article-left:hover,
+        .article-right:hover {
+            text-decoration: none;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .article-left:hover h2,
+        .article-right:hover h3 {
+            text-decoration: underline;
+        }
+        .article-left p {
+            font-size: 0.98rem;
+            color: var(--grey-mid);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.open { display: flex; opacity: 1; }
+        .modal-box { background: var(--white); border-radius: 10px; width: 100%; max-width: 540px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); overflow: hidden; animation: slideUp 0.3s ease forwards; }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-header { background: var(--purple-dark); padding: 24px 28px; display: flex; justify-content: space-between; align-items: center; }
+        .modal-header h2 { color: var(--black); font-size: 1.3rem; margin: 0; }
+        .modal-close { background: none; border: none; color: rgba(0,0,0,0.3); font-size: 1.6rem; cursor: pointer; line-height: 1; padding: 0 4px; transition: color var(--transition); }
+        .modal-close:hover { color: var(--black); }
+        .modal-body { padding: 28px; }
+        .modal-body p { color: var(--grey-dark); font-size: 0.93rem; margin-bottom: 22px; }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-size: 0.88rem; font-weight: 600; color: var(--grey-dark); margin-bottom: 6px; }
+        .form-group input,
+        .form-group select,
+        .form-group textarea { width: 100%; padding: 10px 14px; border: 2px solid var(--grey-light); border-radius: 5px; font-size: 0.95rem; font-family: var(--font-body); color: var(--text); outline: none; transition: border-color var(--transition); background: var(--white); }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus { border-color: var(--purple-dark); }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .modal-footer { padding: 18px 28px; background: var(--off-white); border-top: 1px solid var(--grey-light); display: flex; justify-content: flex-end; gap: 12px; }
+        .success-msg { text-align: center; padding: 36px 20px; }
+        .success-msg .check-circle { width: 64px; height: 64px; border-radius: 50%; background: #e6f4ea; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+        .success-msg .check-circle svg { width: 32px; height: 32px; stroke: #2E8B57; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+        .success-msg h3 { color: var(--purple-dark); margin-bottom: 8px; }
+        .success-msg p { color: var(--grey-dark); font-size: 0.93rem; }
+    </style>
 </head>
 <body>
+
     <header class="navbar">
-        <div class="nav-logo"><a href="index.html">USLogo</a></div>
+        <div class="nav-logo">UoS <span style="color:var(--gold)">Australia</span></div>
         <nav>
             <ul class="nav-links">
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="about.html">About Us</a></li>
+                <li><a href="../index2.html">Home</a></li>
                 <li><a href="study.html">Study</a></li>
                 <li><a href="research.html">Research</a></li>
+                <li><a href="about.html">About Us</a></li>
                 <li><a href="partners.html">Partners</a></li>
+                <li><a href="news.html" class="active">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero-section">
-        <div class="hero-overlay">
-            <h1>News</h1>
-            <p>Keep up with the action here at US</p>
+    <div class="breadcrumb">
+        <a href="../index2.html">Home</a><span>›</span>News
+    </div>
+
+    <section class="page-hero">
+        <h1 class="hero-reveal">News</h1>
+        <p class="hero-reveal hero-reveal-delay-1">Keep up to date with the exciting things happening here at UoS.</p>
+        <div class="hero-reveal hero-reveal-delay-2" style="display:flex; gap:14px; flex-wrap:wrap;">
+            <a href="#latest" class="btn btn-primary">Latest Headlines</a>
+            <a href="#articles" class="btn btn-primary">Articles</a>
         </div>
     </section>
 
+    <div class="search-bar">
+        <input type="search" placeholder="Search by title, keywords, date..." id="siteSearch" />
+        <button>Search</button>
+    </div>
+
+    <br><br>
+
+
+    <!-- Latest -->
+    <section class="news-strip" id="latest">
+        <div style="max-width:1140px; margin:0 auto; padding:0;">
+            <div class="news-title">
+                <div class="strip-header reveal">
+                    <div>
+                        <div class="gold-bar"></div>
+                        <h2 class="section-title">Latest News Headlines</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="news-cards">
+                <div class="news-grid">
+                    <div class="news-card reveal" onclick="openModal('latest1')">
+                        <div class="news-card-img">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-5 0-8 2-8 3v1h16v-1c0-1-3-3-8-3z"/></svg>
+                        </div>
+                        <div class="news-card-body">
+                            <div class="news-meta">
+                                <span class="news-tag">Research</span>
+                                <span>2min read</span>
+                            </div>
+                            <h3>UoS Scientists Awarded National Research Grant</h3>
+                            <p class="news-meta-text">May 12, 2026</p>
+                        </div>
+                    </div>
+                    <div class="news-card reveal" onclick="openModal('latest2')">
+                        <div class="news-card-img">
+                            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5"/></svg>
+                        </div>
+                        <div class="news-card-body">
+                            <div class="news-meta">
+                                <span class="news-tag">Graduation</span>
+                                <span>2min read</span>
+                            </div>
+                            <h3>Class of 2026 Graduation Ceremony Announced</h3>
+                            <p class="news-meta-text">May 8, 2026</p>
+                        </div>
+                    </div>
+                    <div class="news-card reveal" onclick="openModal('latest3')">
+                        <div class="news-card-img">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        </div>
+                        <div class="news-card-body">
+                            <div class="news-meta">
+                                <span class="news-tag">Partnerships</span>
+                                <span>2min read</span>
+                            </div>
+                            <h3>New International Exchange Programs Open for 2027</h3>
+                            <p class="news-meta-text">April 30, 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br><br>
+
+    <!-- More Articles -->
+    <section class="news-articles" id="articles">
+        <div style="max-width:1140px; margin:0 auto; padding=0;">
+            <div class="news-title">
+                <div class="strip-header reveal">
+                    <div>
+                        <div class="gold-bar"></div>
+                        <h2 class="section-title">Articles</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="articles-container">
+                <div class="articles-left" style="max-width:760px;">
+                    <a class="article-left" href="/news/2026-02-05-Breakthroughs-in-Microbiology">
+                        <img src="../images/bacteria.jpg" alt="Image of bacteria">
+                        <div class="news-meta">
+                            <span>February 5, 2026</span>
+                            <span>15min read</span>
+                        </div>
+                        <h2>Breakthroughs in Microbiology</h2>
+                        <br>
+                        <p>Scientists at the University of Students have discovered <i>Chronos mutabilis</i>, a bacterium that rewrites its own DNA in real-time. This organism adapts to extreme environments within milliseconds, defying the known laws of cellular decay. This breakthrough opens the door to programmable, regenerative life forms that could soon redefine modern medicine.</p>
+                    </a>
+                </div>
+                <div class="articles-right" style="max-width:380px;">
+                    <a class="article-right" href="/news/2026-03-25-More-Affordable-Solar-Coming-to-Our-Homes.html">
+                        <img src="../images/solar_panel.jpg" alt="Image of a solar panel">
+                        <div class="news-meta">
+                            <span>March 25, 2026</span>
+                            <span>12min read</span>
+                        </div>
+                        <h3>More Affordable Solar Coming to Our Homes</h3>
+                    </a>
+                    <br>
+                    <a class="article-right" href="/news/2026-01-15-Why-Are-Fuel-Prices-So-High.html">
+                        <img src="../images/fuel-pump.jpg" alt="Image of a fuel pump">
+                        <div class="news-meta">
+                            <span>January 15, 2026</span>
+                            <span>18min read</span>
+                        </div>
+                        <h3>Why Are Fuel Prices So High?</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br>
 
     <footer class="site-footer">
         <div class="footer-container">
-            <div class="footer-links">
-                <h3>Quick Links</h3>
+            <div class="footer-col">
+                <h3>Study</h3>
                 <ul>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="index.html#about">About US</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="news.html">News</a></li>
+                    <li><a href="study.html">Programs</a></li>
+                    <li><a href="study.html?level=undergraduate">Undergraduate</a></li>
+                    <li><a href="study.html?level=postgraduate">Postgraduate</a></li>
                 </ul>
             </div>
-            <div class="footer-copyright">
-                <p>&copy; 2026 University of Students. No rights reserved.</p>
+            <div class="footer-col">
+                <h3>Research</h3>
+                <ul>
+                    <li><a href="research.html">Research Areas</a></li>
+                    <li><a href="research.html#institutes">Institutes</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="../index2.html#">Privacy Policy</a></li>
+                    <li><a href="../index2.html#">Terms of Service</a></li>
+                </ul>
             </div>
         </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 University of Students. All rights reserved.</p>
+            <p>ABN 00 000 000 000 &nbsp;|&nbsp; CRICOS Provider 00000A yo yo yo</p>
+        </div>
     </footer>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+        <div class="modal-box" id="modalBox">
+
+            <div id="modalLatest1" style="display:none;">
+                <div class="modal-header"><h2>UoS Scientists Awarded National Research Grant</h2><button class="modal-close" onclick="closeModal()">&#215;</button></div>
+                <div class="modal-body">
+                    <p> The University of Students has secured a landmark $18.5 million federal grant to spearhead the integration of predictive AI frameworks into oncological diagnostics.<br>
+                    The three-year initiative, operating under the university’s Department of Biomedical Informatics, aims to revolutionize early-state malignancy detection. Researchers will develop localized, deep-learning algorithms designed to synthesize multi-omic datasets, effectively cross-referencing patient genomic sequencing with real-time histopathological imaging. <br>
+                    By leveraging neural networks trained on high-throughput screening data, the project seeks to identify anomalous cellular mutations long before traditional radiological anomalies manifest. Lead investigator Dr. Aris Thorne noted that the core objective is minimizing diagnostic latency and mitigating false-positive vectors in complex carcinomas.<br>
+                    This unprecedented funding injection will establish a high-performance computational pathology suite on campus and support a multidisciplinary cohort of postdoctoral fellows. Early developmental trials for the proprietary diagnostic model are projected to commence by Q4, signaling a paradigm shift in precision oncology. </p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" href="news/2026-05-12-UoS-Scientists-Awarded-National-Research.html">Read More</a>
+                    <button class="btn btn-primary" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+
+            <div id="modalLatest2" style="display:none;">
+                <div class="modal-header"><h2>Class of 2026 Graduation Ceremony Announced</h2><button class="modal-close" onclick="closeModal()">&#215;</button></div>
+                <div class="modal-body">
+                    <p>The long-awaited moment has finally arrived for thousands of scholars nationwide. This morning, administration officials at the University of Students officially confirmed the commencement ceremony date for the graduating class of 2026.<br>
+                    According to an institutional press release, the main ceremony will take place on Friday, 20 November 2026 at the central campus stadium. Gates are scheduled to open at 8:00 AM, with the traditional processional beginning promptly at 9:30 AM.<br>
+                    University President Dr Jane Foster expressed immense pride in the upcoming cohort, noting that this year's class has demonstrated unprecedented academic resilience. Over 5,000 undergraduate and postgraduate students are expected to cross the stage to receive their diplomas.<br>
+                    Eligible graduates must register for their caps and gowns through the student portal by next month. Ticket registration details for family and friends will be emailed directly to students tomorrow morning. </p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" href="news/2026-05-08-Class-of-2026-Graduation-Ceremony-Announced.html">Read More</a>
+                    <button class="btn btn-primary" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+            <div id="modalLatest3" style="display:none;">
+                <div class="modal-header"><h2>New International Exchange Programs Open for 2027</h2><button class="modal-close" onclick="closeModal()">&#215;</button></div>
+                <div class="modal-body">
+                    <p>The University of Students has just unveiled its most ambitious international exchange program yet, launching a groundbreaking global academic alliance for the upcoming 2027 semesters. Through this unprecedented initiative, undergraduate and postgraduate students can now apply for fully funded placements across five continents, including exclusive partnerships with elite research hubs in Tokyo, Paris, and Cape Town.<br>
+                    University officials confirm the program will cover all tuition, flights, and living stipends, aiming to dismantle financial barriers to international education. Applicants will gain access to cutting-edge laboratories, prestigious corporate internships, and immersive cultural residencies designed to forge the next generation of global leaders.Competition for the inaugural 2027 cohort is expected to be fierce, with applications opening early next month. Read on to discover the eligibility criteria, the full list of partner institutions, and how you can secure your spot in this life-changing academic adventure </p>
+                </div>
+                <div class="modal-footer"><a class="btn btn-primary" href="news/2026-04-30-New-International-Exchange-Programs">Read More</a><button class="btn btn-primary" onclick="closeModal()">Close</button></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        /* Scroll-reveal */
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) { e.target.classList.add('visible'); }
+                else { e.target.classList.remove('visible'); }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+        /* Modal */
+        function openModal(type) {
+            ['modalLatest1','modalLatest2','modalLatest3'].forEach(function(id) {
+                document.getElementById(id).style.display = 'none';
+            });
+            var map = { latest1:'modalLatest1', latest2:'modalLatest2', latest3:'modalLatest3' };
+            document.getElementById(map[type]).style.display = 'block';
+            var overlay = document.getElementById('modalOverlay');
+            overlay.style.display = 'flex';
+            setTimeout(function() { overlay.style.opacity = '1'; }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            var overlay = document.getElementById('modalOverlay');
+            overlay.style.opacity = '0';
+            setTimeout(function() { overlay.style.display = 'none'; document.body.style.overflow = ''; }, 300);
+        }
+        function closeModalOnBg(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+    </script>
 </body>
 </html>
-
