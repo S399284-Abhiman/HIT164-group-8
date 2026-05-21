@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles/styles2.css">
     <style>
         .study-hero {
-            background: linear-gradient(135deg, var(--purple-dark) 0%, #3b1060 55%, var(--purple-mid) 100%);
+            background: linear-gradient(135deg, var(--purple-500) 0%, #3b1060 55%, var(--purple-light) 100%);
             color: var(--white);
             padding: 70px 40px 80px;
             position: relative;
@@ -19,22 +19,22 @@
         .study-hero p  { font-size:1.12rem; opacity:0.88; max-width:620px; margin-bottom:32px; position:relative; z-index:2; }
         .hero-search { display:flex; gap:0; max-width:520px; position:relative; z-index:2; }
         .hero-search input { flex:1; padding:13px 18px; border:none; border-radius:4px 0 0 4px; font-size:0.98rem; font-family:var(--font-body); outline:none; }
-        .hero-search button { padding:13px 22px; background:var(--gold); border:none; border-radius:0 4px 4px 0; color:var(--grey-dark); font-weight:700; font-size:0.95rem; cursor:pointer; font-family:var(--font-body); transition:background var(--transition); }
+        .hero-search button { padding:13px 22px; background:var(--purple-50); border:none; border-radius:0 4px 4px 0; color:var(--grey-dark); font-weight:700; font-size:0.95rem; cursor:pointer; font-family:var(--font-body); transition:background var(--transition); }
         .hero-search button:hover { background:#a88850; color:var(--white); }
 
         .level-tabs { background:var(--white); border-bottom:2px solid var(--grey-light); padding:0 40px; display:flex; gap:0; position:sticky; top:var(--nav-height); z-index:100; }
         .level-tab { padding:18px 28px; font-size:0.95rem; font-weight:600; color:var(--grey-mid); cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-2px; transition:color var(--transition), border-color var(--transition); background:none; border-top:none; border-left:none; border-right:none; font-family:var(--font-body); }
-        .level-tab:hover { color:var(--purple-dark); }
-        .level-tab.active { color:var(--purple-dark); border-bottom-color:var(--purple-dark); }
+        .level-tab:hover { color:var(--purple-500); }
+        .level-tab.active { color:var(--purple-500); border-bottom-color:var(--purple-500); }
 
         .programs-layout { display:grid; grid-template-columns:260px 1fr; gap:0; max-width:1140px; margin:0 auto; padding:48px 40px; }
         .filter-sidebar { padding-right:32px; border-right:1px solid var(--grey-light); }
         .filter-sidebar h3 { font-size:0.85rem; font-family:var(--font-body); font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--grey-mid); margin-bottom:12px; margin-top:24px; }
         .filter-sidebar h3:first-child { margin-top:0; }
         .filter-option { display:flex; align-items:center; gap:10px; padding:8px 0; cursor:pointer; }
-        .filter-option input[type="checkbox"] { accent-color:var(--purple-dark); width:16px; height:16px; cursor:pointer; }
-        .filter-option label { font-size:0.9rem; color:var(--grey-dark); cursor:pointer; transition:color var(--transition); }
-        .filter-option:hover label { color:var(--purple-dark); }
+        .filter-option input[type="checkbox"] { accent-color:var(--purple-500); width:16px; height:16px; cursor:pointer; }
+        .filter-option label { font-size:0.9rem; color:var(--grey-500); cursor:pointer; transition:color var(--transition); }
+        .filter-option:hover label { color:var(--purple-500); }
         .filter-count { margin-left:auto; background:var(--grey-light); border-radius:10px; padding:1px 8px; font-size:0.75rem; color:var(--grey-mid); }
 
         .programs-content { padding-left:36px; }
@@ -45,7 +45,7 @@
 
         .program-card { background:var(--white); border:1px solid var(--grey-light); border-radius:8px; overflow:hidden; transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition); cursor:pointer; }
         .program-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:var(--purple-light); }
-        .program-card-accent { height:5px; background:var(--purple-dark); }
+        .program-card-accent { height:5px; background:var(--purple-500); }
         .program-card-body { padding:20px; }
         .program-faculty { font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--grey-mid); margin-bottom:8px; }
         .program-card-body h3 { font-size:1rem; font-family:var(--font-body); font-weight:700; color:var(--text); margin-bottom:10px; line-height:1.35; }
