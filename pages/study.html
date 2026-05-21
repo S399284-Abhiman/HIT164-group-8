@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study — University of Students</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <style>
         .study-hero {
             background: linear-gradient(135deg, var(--purple-dark) 0%, #3b1060 55%, var(--purple-mid) 100%);
@@ -57,7 +57,6 @@
         .program-link:hover { color:var(--purple-mid); text-decoration:none; }
         .program-card.hidden { display:none; }
 
-        /* Active filter badge shown when pre-filtered from homepage */
         .active-filter-bar { display:none; background:var(--purple-light); border-radius:6px; padding:10px 16px; margin-bottom:20px; font-size:0.88rem; color:var(--purple-dark); display:flex; align-items:center; justify-content:space-between; }
         .active-filter-bar button { background:none; border:none; color:var(--purple-dark); cursor:pointer; font-size:0.85rem; font-weight:600; font-family:var(--font-body); text-decoration:underline; }
 
@@ -267,7 +266,7 @@
         <div style="max-width:1140px; margin:0 auto; padding:0;">
             <div class="gold-bar reveal"></div>
             <h2 class="section-title reveal">Why Study at UoS?</h2>
-            <p class="section-subtitle reveal reveal-delay-1">We invest in your success — from day one to graduation and beyond.</p>
+            <p class="section-subtitle reveal reveal-delay-1">We invest in your success from day one to graduation and beyond.</p>
             <div class="why-grid">
                 <div class="why-card reveal">
                     <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
@@ -287,7 +286,7 @@
                 <div class="why-card reveal reveal-delay-3">
                     <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
                     <h3>Diverse Community</h3>
-                    <p>Join a welcoming campus of 55,000 students from over 140 countries — a truly global university experience.</p>
+                    <p>Join a welcoming campus of 55,000 students from over 140 countries a truly global university experience.</p>
                 </div>
                 <div class="why-card reveal reveal-delay-4">
                     <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
@@ -314,19 +313,55 @@
 
     <footer class="site-footer">
         <div class="footer-container">
-            <div class="footer-col"><h3>Study</h3><ul><li><a href="study.html">Programs</a></li><li><a href="study.html?level=undergraduate">Undergraduate</a></li><li><a href="study.html?level=postgraduate">Postgraduate</a></li><li><a href="study.html?level=online">Online &amp; Flexible</a></li></ul></div>
-            <div class="footer-col"><h3>Research</h3><ul><li><a href="research.html">Research Areas</a></li><li><a href="research.html#institutes">Institutes</a></li></ul></div>
-            <div class="footer-col"><h3>Connect</h3><ul><li><a href="contact.html">Contact Us</a></li><li><a href="news.html">News</a></li><li><a href="partners.html">Partners</a></li></ul></div>
-            <div class="footer-col"><h3>Legal</h3><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+            <div class="footer-col">
+                <h3>Study</h3>
+                <ul>
+                    <li><a href="pages/study.html">Programs</a></li>
+                    <li><a href="pages/study.html?level=undergraduate">Undergraduate</a></li>
+                    <li><a href="pages/study.html?level=postgraduate">Postgraduate</a></li>
+                    <li><a href="pages/study.html?level=online">Online &amp; Flexible</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Research</h3>
+                <ul>
+                    <li><a href="pages/research.html">Research Areas</a></li>
+                    <li><a href="pages/research.html#institutes">Institutes</a></li>
+                    <li><a href="pages/research.html#funding">Funding</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="pages/contact.html">Contact Us</a></li>
+                    <li><a href="pages/news.html">News</a></li>
+                    <li><a href="pages/partners.html">Partners</a></li>
+                    <li><a href="pages/about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                    <li><a href="#">Binit Shilpakar</a></li>
+                    <li><a href="#">TJ Woods</a></li>
+                    <li><a href="#">Ab</a></li>
+                </ul>
+            </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 University of Students. All rights reserved.</p>
-            <p>ABN 00 000 000 000 &nbsp;|&nbsp; CRICOS Provider 00000A</p>
+            <p>ABN 00 000 000 000 &nbsp;|&nbsp; CRICOS Provider 00000A yo yo yo</p>
         </div>
     </footer>
 
     <script>
-        /* Scroll-reveal */
+
+
+
+
         var obs = new IntersectionObserver(function(entries) {
             entries.forEach(function(e) {
                 if (e.isIntersecting) { e.target.classList.add('visible'); }
@@ -335,7 +370,7 @@
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
 
-        /* Read URL params on load — applied from homepage links */
+
         var currentLevel = 'all';
 
         window.addEventListener('load', function() {
