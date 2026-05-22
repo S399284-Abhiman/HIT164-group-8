@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../styles/styles2.css">
     <style>
         .study-hero {
-            background: linear-gradient(135deg, var(--purple-500) 0%, #3b1060 55%, var(--purple-light) 100%);
+            background: linear-gradient(135deg, var(--purple-dark) 0%, #3b1060 55%, var(--purple-mid) 100%);
             color: var(--white);
             padding: 70px 40px 80px;
             position: relative;
@@ -19,22 +19,22 @@
         .study-hero p  { font-size:1.12rem; opacity:0.88; max-width:620px; margin-bottom:32px; position:relative; z-index:2; }
         .hero-search { display:flex; gap:0; max-width:520px; position:relative; z-index:2; }
         .hero-search input { flex:1; padding:13px 18px; border:none; border-radius:4px 0 0 4px; font-size:0.98rem; font-family:var(--font-body); outline:none; }
-        .hero-search button { padding:13px 22px; background:var(--purple-50); border:none; border-radius:0 4px 4px 0; color:var(--grey-dark); font-weight:700; font-size:0.95rem; cursor:pointer; font-family:var(--font-body); transition:background var(--transition); }
+        .hero-search button { padding:13px 22px; background:var(--gold); border:none; border-radius:0 4px 4px 0; color:var(--grey-dark); font-weight:700; font-size:0.95rem; cursor:pointer; font-family:var(--font-body); transition:background var(--transition); }
         .hero-search button:hover { background:#a88850; color:var(--white); }
 
         .level-tabs { background:var(--white); border-bottom:2px solid var(--grey-light); padding:0 40px; display:flex; gap:0; position:sticky; top:var(--nav-height); z-index:100; }
         .level-tab { padding:18px 28px; font-size:0.95rem; font-weight:600; color:var(--grey-mid); cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-2px; transition:color var(--transition), border-color var(--transition); background:none; border-top:none; border-left:none; border-right:none; font-family:var(--font-body); }
-        .level-tab:hover { color:var(--purple-500); }
-        .level-tab.active { color:var(--purple-500); border-bottom-color:var(--purple-500); }
+        .level-tab:hover { color:var(--purple-dark); }
+        .level-tab.active { color:var(--purple-dark); border-bottom-color:var(--purple-dark); }
 
         .programs-layout { display:grid; grid-template-columns:260px 1fr; gap:0; max-width:1140px; margin:0 auto; padding:48px 40px; }
         .filter-sidebar { padding-right:32px; border-right:1px solid var(--grey-light); }
         .filter-sidebar h3 { font-size:0.85rem; font-family:var(--font-body); font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--grey-mid); margin-bottom:12px; margin-top:24px; }
         .filter-sidebar h3:first-child { margin-top:0; }
         .filter-option { display:flex; align-items:center; gap:10px; padding:8px 0; cursor:pointer; }
-        .filter-option input[type="checkbox"] { accent-color:var(--purple-500); width:16px; height:16px; cursor:pointer; }
-        .filter-option label { font-size:0.9rem; color:var(--grey-500); cursor:pointer; transition:color var(--transition); }
-        .filter-option:hover label { color:var(--purple-500); }
+        .filter-option input[type="checkbox"] { accent-color:var(--purple-dark); width:16px; height:16px; cursor:pointer; }
+        .filter-option label { font-size:0.9rem; color:var(--grey-dark); cursor:pointer; transition:color var(--transition); }
+        .filter-option:hover label { color:var(--purple-dark); }
         .filter-count { margin-left:auto; background:var(--grey-light); border-radius:10px; padding:1px 8px; font-size:0.75rem; color:var(--grey-mid); }
 
         .programs-content { padding-left:36px; }
@@ -45,7 +45,7 @@
 
         .program-card { background:var(--white); border:1px solid var(--grey-light); border-radius:8px; overflow:hidden; transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition); cursor:pointer; }
         .program-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:var(--purple-light); }
-        .program-card-accent { height:5px; background:var(--purple-500); }
+        .program-card-accent { height:5px; background:var(--purple-dark); }
         .program-card-body { padding:20px; }
         .program-faculty { font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:var(--grey-mid); margin-bottom:8px; }
         .program-card-body h3 { font-size:1rem; font-family:var(--font-body); font-weight:700; color:var(--text); margin-bottom:10px; line-height:1.35; }
@@ -57,6 +57,7 @@
         .program-link:hover { color:var(--purple-mid); text-decoration:none; }
         .program-card.hidden { display:none; }
 
+        /* Active filter badge shown when pre-filtered from homepage */
         .active-filter-bar { display:none; background:var(--purple-light); border-radius:6px; padding:10px 16px; margin-bottom:20px; font-size:0.88rem; color:var(--purple-dark); display:flex; align-items:center; justify-content:space-between; }
         .active-filter-bar button { background:none; border:none; color:var(--purple-dark); cursor:pointer; font-size:0.85rem; font-weight:600; font-family:var(--font-body); text-decoration:underline; }
 
@@ -78,21 +79,21 @@
 <body>
 
     <header class="navbar">
-        <div class="nav-logo">U <span style="color:var(--gold)">Australia</span></div>
+        <div class="nav-logo">UoS <span style="color:var(--gold)">Australia</span></div>
         <nav>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="../index2.html">Home</a></li>
                 <li><a href="study.html" class="active">Study</a></li>
                 <li><a href="research.html">Research</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="partners.html">Partners</a></li>
                 <li><a href="news.html">News</a></li>
-                <li><a href="contact.html">Contact USS</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span>Study</div>
+    <div class="breadcrumb"><a href="../index2.html">Home</a><span>›</span>Study</div>
 
     <section class="study-hero">
         <h1 class="hero-reveal">Find Your Program</h1>
@@ -266,7 +267,7 @@
         <div style="max-width:1140px; margin:0 auto; padding:0;">
             <div class="gold-bar reveal"></div>
             <h2 class="section-title reveal">Why Study at UoS?</h2>
-            <p class="section-subtitle reveal reveal-delay-1">We invest in your success from day one to graduation and beyond.</p>
+            <p class="section-subtitle reveal reveal-delay-1">We invest in your success — from day one to graduation and beyond.</p>
             <div class="why-grid">
                 <div class="why-card reveal">
                     <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
@@ -286,7 +287,7 @@
                 <div class="why-card reveal reveal-delay-3">
                     <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
                     <h3>Diverse Community</h3>
-                    <p>Join a welcoming campus of 55,000 students from over 140 countries a truly global university experience.</p>
+                    <p>Join a welcoming campus of 55,000 students from over 140 countries — a truly global university experience.</p>
                 </div>
                 <div class="why-card reveal reveal-delay-4">
                     <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
@@ -312,56 +313,94 @@
     </section>
 
     <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h3>Study</h3>
-                <ul>
-                    <li><a href="pages/study.html">Programs</a></li>
-                    <li><a href="pages/study.html?level=undergraduate">Undergraduate</a></li>
-                    <li><a href="pages/study.html?level=postgraduate">Postgraduate</a></li>
-                    <li><a href="pages/study.html?level=online">Online &amp; Flexible</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Research</h3>
-                <ul>
-                    <li><a href="pages/research.html">Research Areas</a></li>
-                    <li><a href="pages/research.html#institutes">Institutes</a></li>
-                    <li><a href="pages/research.html#funding">Funding</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Connect</h3>
-                <ul>
-                    <li><a href="pages/contact.html">Contact Us</a></li>
-                    <li><a href="pages/news.html">News</a></li>
-                    <li><a href="pages/partners.html">Partners</a></li>
-                    <li><a href="pages/about.html">About</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Accessibility</a></li>
-                    <li><a href="#">Binit Shilpakar</a></li>
-                    <li><a href="#">TJ Woods</a></li>
-                    <li><a href="#">Ab</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 University of Students. All rights reserved.</p>
-            <p>ABN 00 000 000 000 &nbsp;|&nbsp; CRICOS Provider 00000A yo yo yo</p>
-        </div>
-    </footer>
 
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h3>Study</h3>
+            <ul>
+                <li><a href="study.html">Programs</a></li>
+                <li><a href="study.html?level=undergraduate">Undergraduate</a></li>
+                <li><a href="study.html?level=postgraduate">Postgraduate</a></li>
+                <li><a href="study.html?level=online">Online &amp; Flexible</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Research</h3>
+            <ul>
+                <li><a href="research.html">Research Areas</a></li>
+                <li><a href="research.html#institutes">Institutes</a></li>
+                <li><a href="research.html#funding">Funding</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Connect</h3>
+            <ul>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="partners.html">Partners</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Legal</h3>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Accessibility</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Creator Section -->
+    <div class="footer-creators">
+
+        <div class="footer-creators-title">
+            <span>Designed &amp; Developed By</span>
+        </div>
+
+        <div class="footer-creators-list">
+
+            <a class="creator-card" href="#">
+                <span class="creator-avatar">BS</span>
+                <div class="creator-info">
+                    <strong>Binit Shilpakar</strong>
+                    <small>something &amp; something</small>
+                </div>
+            </a>
+
+            <a class="creator-card" href="#">
+                <span class="creator-avatar">TW</span>
+                <div class="creator-info">
+                    <strong>Travis Josh Woods</strong>
+                    <small>something &amp; something</small>
+                </div>
+            </a>
+
+            <a class="creator-card" href="#">
+                <span class="creator-avatar">AB</span>
+                <div class="creator-info">
+                    <strong>Ahiman Bhattarai</strong>
+                    <small>something &amp; something</small>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 University of Students. All rights reserved.</p>
+        <p>ABN 00 000 000 000 &nbsp;|&nbsp; CRICOS Provider 00000A</p>
+    </div>
+
+</footer>
     <script>
-
-
-
-
+        /* Scroll-reveal */
         var obs = new IntersectionObserver(function(entries) {
             entries.forEach(function(e) {
                 if (e.isIntersecting) { e.target.classList.add('visible'); }
@@ -370,7 +409,7 @@
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
 
-
+        /* Read URL params on load — applied from homepage links */
         var currentLevel = 'all';
 
         window.addEventListener('load', function() {
