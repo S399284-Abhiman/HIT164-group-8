@@ -229,8 +229,11 @@
 </head>
 <body>
 
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="navbar">
-        <div class="nav-logo">UoS <span style="color:var(--gold)">Australia</span></div>
+        <a class="nav-logo" href="../index2.html">UoS <span style="color:var(--gold)">Australia</span></a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
         <nav>
             <ul class="nav-links">
                 <li><a href="../index2.html">Home</a></li>
@@ -436,7 +439,7 @@
             <a class="creator-card" href="#">
                 <span class="creator-avatar">TW</span>
                 <div class="creator-info">
-                    <strong>Travis Josh Woods</strong>
+                    <strong>TJ Woods</strong>
                     <small>something &amp; something</small>
                 </div>
             </a>
@@ -501,17 +504,11 @@
             </div>
         </div>
     </div>
-    <script>
-        /* Scroll-reveal */
-        var obs = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) {
-                if (e.isIntersecting) { e.target.classList.add('visible'); }
-                else { e.target.classList.remove('visible'); }
-            });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+    <script src="../js/shared.js"></script>
+</body>
+</html>
 
-        /* Modal */
+    <script>
         function openModal(type) {
             ['modalLatest1','modalLatest2','modalLatest3'].forEach(function(id) {
                 document.getElementById(id).style.display = 'none';
@@ -530,7 +527,4 @@
         }
         function closeModalOnBg(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
         document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
-
     </script>
-</body>
-</html>

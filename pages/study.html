@@ -78,8 +78,11 @@
 </head>
 <body>
 
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="navbar">
-        <div class="nav-logo">UoS <span style="color:var(--gold)">Australia</span></div>
+        <a class="nav-logo" href="../index2.html">UoS <span style="color:var(--gold)">Australia</span></a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
         <nav>
             <ul class="nav-links">
                 <li><a href="../index2.html">Home</a></li>
@@ -376,7 +379,7 @@
             <a class="creator-card" href="#">
                 <span class="creator-avatar">TW</span>
                 <div class="creator-info">
-                    <strong>Travis Josh Woods</strong>
+                    <strong>TJ Woods</strong>
                     <small>something &amp; something</small>
                 </div>
             </a>
@@ -399,16 +402,8 @@
     </div>
 
 </footer>
+    <script src="../js/shared.js"></script>
     <script>
-        /* Scroll-reveal */
-        var obs = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) {
-                if (e.isIntersecting) { e.target.classList.add('visible'); }
-                else { e.target.classList.remove('visible'); }
-            });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
-
         /* Read URL params on load — applied from homepage links */
         var currentLevel = 'all';
 
@@ -418,15 +413,13 @@
             var level   = params.get('level');
 
             if (faculty) {
-                /* Uncheck all faculty boxes, check only matching */
                 ['science','arts','health','law','tech','business'].forEach(function(f) {
                     var el = document.getElementById('f-' + f);
                     if (el) el.checked = (f === faculty);
                 });
-                var bar = document.getElementById('filterBar');
                 var labelMap = { science:'Science & Engineering', tech:'Technology & IT', business:'Business & Economics', health:'Health & Medicine', arts:'Arts & Humanities', law:'Law & Justice' };
                 document.getElementById('filterBarText').textContent = 'Filtered by faculty: ' + (labelMap[faculty] || faculty);
-                bar.style.display = 'flex';
+                document.getElementById('filterBar').style.display = 'flex';
             }
 
             if (level) {
@@ -436,11 +429,10 @@
                 var idx = levelMap[level] !== undefined ? levelMap[level] : 0;
                 tabs.forEach(function(t) { t.classList.remove('active'); });
                 if (tabs[idx]) tabs[idx].classList.add('active');
-                var bar = document.getElementById('filterBar');
                 var labelMap2 = { undergraduate:'Undergraduate', postgraduate:'Postgraduate', phd:'PhD & Research', online:'Online & Flexible' };
                 if (level !== 'all') {
                     document.getElementById('filterBarText').textContent = 'Filtered by level: ' + (labelMap2[level] || level);
-                    bar.style.display = 'flex';
+                    document.getElementById('filterBar').style.display = 'flex';
                 }
             }
 
@@ -494,7 +486,6 @@
             document.querySelectorAll('.level-tab').forEach(function(t) { t.classList.remove('active'); });
             document.querySelectorAll('.level-tab')[0].classList.add('active');
             document.getElementById('filterBar').style.display = 'none';
-            /* Clear URL params without reloading */
             history.replaceState(null, '', window.location.pathname);
             filterPrograms();
         }

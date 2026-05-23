@@ -4,129 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research — University of Students</title>
+    <meta name="description" content="World-class research at UoS Australia — from microbiology to AI and sustainability.">
     <link rel="stylesheet" href="../styles/styles2.css">
-    <style>
-        .hero-section {
-            position: relative;
-            height: 540px;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(120deg, var(--purple-500) 0%, #2d0f4e 50%, var(--purple-light) 100%);
-        }
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            top: -80px; right: -80px;
-            width: 400px; height: 400px;
-            border-radius: 50%;
-            background: rgba(187,157,101,0.10);
-        }
-        .hero-bg::after {
-            content: '';
-            position: absolute;
-            bottom: -60px; left: 30%;
-            width: 260px; height: 260px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.04);
-        }
-        .hero-overlay {
-            position: relative;
-            z-index: 2;
-            padding: 0 60px;
-            max-width: 700px;
-        }
-        .hero-overlay h1 {
-            color: var(--white);
-            font-size: 3rem;
-            margin-bottom: 18px;
-            line-height: 1.15;
-        }
-        .hero-overlay p {
-            color: rgba(255,255,255,0.84);
-            font-size: 1.15rem;
-            margin-bottom: 34px;
-        }
-        .hero-badges {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        .hero-badge {
-            background: rgba(255,255,255,0.10);
-            border: 1px solid rgba(255,255,255,0.22);
-            border-radius: 40px;
-            padding: 6px 18px;
-            color: var(--white);
-            font-size: 0.86rem;
-        }
-        .strip-section { padding: 64px 40px 0; margin: 0 auto; }
-        .strip-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 24px;
-        }
-        .banner {
-            background-color: var(--purple-500);
-            color: var(--white);
-            text-align: center;
-            padding: 20px 40px;
-            font-size: 0.92rem;
-        }
-        .banner h2 {
-            max-width: 1140px;
-            width: 100%;
-            margin: 0 auto;
-            opacity: 0.90;
-            line-height: 1.7;
-            color: var(--white);
-        }
-        .news-meta {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            font-size:0.8rem;
-            color: var(--grey-mid);
-        }
-        .news-meta-text {
-            font-size:0.8rem;
-            color: var(--grey-mid);
-        }
-        .content-container {
-            display: grid;
-            gap: 0 32px;
-            padding: 0 20px;
-        }
-        .content-left,
-        .content-right {
-            grid-row: 1 / span 1;
-            display: block;
-            text-decoration: none;
-            border: 2px solid transparent;
-            border-radius: 6px;
-            box-shadow: var(--shadow);
-        }
-        .content-right p {
-            font-size: 0.98rem;
-            color: var(--grey-mid);
-        }
-    </style>
 </head>
 <body>
 
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="navbar">
-        <div class="nav-logo">UoS <span style="color:var(--gold)">Australia</span></div>
+        <a href="../index2.html" class="nav-logo">UoS <span style="color:var(--gold)">Australia</span></a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
         <nav>
             <ul class="nav-links">
                 <li><a href="../index2.html">Home</a></li>
                 <li><a href="study.html">Study</a></li>
-                <li><a href="research.html", class="active">Research</a></li>
+                <li><a href="research.html" class="active">Research</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="partners.html">Partners</a></li>
                 <li><a href="news.html">News</a></li>
@@ -144,173 +38,215 @@
         <p class="hero-reveal hero-reveal-delay-1">Our research is making an impact on the world's most challenging and complex problems.</p>
     </section>
 
-    <br><br>
+    <main id="main">
 
-    <section class="content">
-        <div style="max-width:1140px; margin:0 auto; padding:0;">
-            <div class="content-title">
-                <div class="strip-header reveal">
+        <!-- Featured Articles -->
+        <div class="research-articles">
+
+            <div class="strip-header reveal" style="margin-bottom:40px;">
+                <div>
+                    <div class="gold-bar"></div>
+                    <h2 class="section-title">Featured Research</h2>
+                    <p class="section-subtitle">Breakthroughs from our world-leading research community.</p>
+                </div>
+                <a href="news.html" class="btn btn-outline">All News</a>
+            </div>
+
+            <!-- Article 1 -->
+            <div class="research-article-grid reveal">
+                <div class="research-img">
+                    <img src="../images/bacteria.jpg" alt="Microscopic image of bacteria">
+                </div>
+                <div class="research-text">
+                    <h2>Breakthroughs in Microbiology</h2>
+                    <p>Scientists at the University of Students have discovered <em>Chronos mutabilis</em>, a bacterium that rewrites its own DNA in real-time. This organism adapts to extreme environments within milliseconds, defying the known laws of cellular decay.</p>
+                    <p>This breakthrough opens the door to programmable, regenerative life forms that could soon redefine modern medicine.</p>
+                    <a href="news.html" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="research-article-grid reverse reveal">
+                <div class="research-img">
+                    <img src="../images/partners.jpg" alt="UoS research partners">
+                </div>
+                <div class="research-text">
+                    <h2>Partnerships &amp; Collaboration</h2>
+                    <p>Our research doesn't happen in isolation. Through deep ties with industry, government, and global institutions, we translate discoveries into real-world impact — from clinical trials to policy reform.</p>
+                    <p>Connect with our sponsors, partners, and contributors to explore collaboration opportunities.</p>
+                    <a href="partners.html" class="btn btn-primary">Our Partners</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Stats Banner -->
+        <section class="research-stats-banner" id="funding">
+            <div class="research-stats-inner">
+                <div class="research-stat reveal">
+                    <h2>#1</h2>
+                    <p>Grant recipient nationally — more research funding than any other Australian university</p>
+                </div>
+                <div class="research-stat reveal reveal-delay-1">
+                    <h2>100%</h2>
+                    <p>Of our research rated world-standard or above by national quality frameworks</p>
+                </div>
+                <div class="research-stat reveal reveal-delay-2">
+                    <h2>#12</h2>
+                    <p>Globally for application of research to real-world problems (QS Rankings 2026)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Areas -->
+        <section class="research-areas" id="institutes">
+            <div class="research-areas-inner">
+                <div class="strip-header reveal" style="margin-bottom:0;">
                     <div>
                         <div class="gold-bar"></div>
-                        <h2 class="section-title">Articles</h2>
+                        <h2 class="section-title">Research Areas</h2>
+                        <p class="section-subtitle">Six flagship institutes driving discovery across disciplines.</p>
                     </div>
                 </div>
-            </div>
-            <div class="content-container">
-                <div class="content-left" style="max-width:570px;">
-                    <img src="../images/bacteria.jpg", alt="Image of bacteria">
-                </div>
-                <div class="content-right" style="max-width:570px;">
-                    <br>
-                    <h2>Breakthroughs in Microbiology</h2>
-                    <br>
-                    <p>Scientists at the University of Students have discovered <i>Chronos mutabilis</i>, a bacterium that rewrites its own DNA in real-time. This organism adapts to extreme environments within milliseconds, defying the known laws of cellular decay. This breakthrough opens the door to programmable, regenerative life forms that could soon redefine modern medicine.</p>
-                    <br>
-                    <div class="content-btn">
-                        <a class="btn btn-primary" href="news.html">More News</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="margin:0 auto; padding:0;">
-            <br><br>
-            <div class="banner" style="width:auto; display:flex; justify-content:space-between; align-items:flex-end;">
-                <div class="strip-section">
-                    <div class="strip-header reveal">
-                        <div class="content-container" style="max-width: 300px;">
-                            <h2>#1 Grant Recipient</h2>
-                            <p>We receive the most research grants annually across the nation</p>
+                <div class="research-areas-grid">
+
+                    <div class="research-area-card reveal">
+                        <div class="research-area-icon">
+                            <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
                         </div>
-                        <div class="content-container" style="max-width: 300px;">
-                            <h2>World-Standard Research</h2>
-                            <p>100% of our research is world-standard</p>
-                        </div>
-                        <div class="content-container" style="max-width: 300px;">
-                            <h2>Leading Innovation</h2>
-                            <p>#12 rank for application of research to real-world problems globally</p>
-                        </div>
+                        <h3>Life Sciences &amp; Medicine</h3>
+                        <p>From genomics to drug discovery, our researchers are pushing the frontiers of human health.</p>
                     </div>
+
+                    <div class="research-area-card reveal reveal-delay-1">
+                        <div class="research-area-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                        </div>
+                        <h3>Artificial Intelligence &amp; Data</h3>
+                        <p>Building ethical, explainable AI systems that solve complex societal challenges at scale.</p>
+                    </div>
+
+                    <div class="research-area-card reveal reveal-delay-2">
+                        <div class="research-area-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3>Climate &amp; Sustainability</h3>
+                        <p>Interdisciplinary science addressing climate change, renewable energy, and ecosystem resilience.</p>
+                    </div>
+
+                    <div class="research-area-card reveal reveal-delay-3">
+                        <div class="research-area-icon">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        </div>
+                        <h3>Digital Society &amp; Law</h3>
+                        <p>Examining how technology reshapes democracy, privacy, and legal frameworks around the world.</p>
+                    </div>
+
+                    <div class="research-area-card reveal reveal-delay-4">
+                        <div class="research-area-icon">
+                            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </div>
+                        <h3>Engineering &amp; Infrastructure</h3>
+                        <p>Designing resilient cities, smart materials, and next-generation transport systems.</p>
+                    </div>
+
+                    <div class="research-area-card reveal reveal-delay-5">
+                        <div class="research-area-icon">
+                            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h3>Social Sciences &amp; Policy</h3>
+                        <p>Generating evidence that shapes government policy and community wellbeing across Australia and beyond.</p>
+                    </div>
+
                 </div>
             </div>
-        </div>
-        <div style="max-width:1140px; margin: 0 auto; padding:0;">
-            <br><br>
-            <div class="content-container">
-                <div class="content-left" style="max-width:570px;">
-                    <img src="../images/partners.jpg" alt="Image of UoS Partners">
-                </div>
-                <div class="content-right" style="max-width:570px;">
-                    <br>
-                    <h2>Partnerships</h2>
-                    <br>
-                    <p>Connect with our sponsors, partners, and contributors</p>
-                    <br>
-                    <div class="content-btn">
-                        <a class="btn btn-primary" href="partners.html">Our Partners</a>
-                    </div>
-                </div>
+        </section>
+
+        <!-- CTA -->
+        <section style="background:linear-gradient(135deg,var(--purple-dark),var(--purple-mid)); color:var(--white); text-align:center; padding:60px 40px;">
+            <h2 style="color:var(--white); font-size:2rem; margin-bottom:12px;" class="reveal">Interested in Collaborating?</h2>
+            <p style="opacity:0.88; font-size:1.05rem; max-width:500px; margin:0 auto 28px;" class="reveal reveal-delay-1">Whether you're from industry, government, or another institution, we'd love to explore what we can achieve together.</p>
+            <div class="reveal reveal-delay-2" style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+                <a href="contact.html" class="btn btn-primary" style="background:var(--gold); border-color:var(--gold); color:var(--grey-dark);">Get in Touch</a>
+                <a href="partners.html" class="btn btn-outline" style="color:var(--white); border-color:rgba(255,255,255,0.5);">Our Partners</a>
             </div>
-        </div>
-    </section>
-    <br><br>
+        </section>
+
+    </main>
 
     <footer class="site-footer">
-
-    <div class="footer-container">
-
-        <div class="footer-col">
-            <h3>Study</h3>
-            <ul>
-                <li><a href="study.html">Programs</a></li>
-                <li><a href="study.html?level=undergraduate">Undergraduate</a></li>
-                <li><a href="study.html?level=postgraduate">Postgraduate</a></li>
-                <li><a href="study.html?level=online">Online &amp; Flexible</a></li>
-            </ul>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Study</h3>
+                <ul>
+                    <li><a href="study.html">Programs</a></li>
+                    <li><a href="study.html?level=undergraduate">Undergraduate</a></li>
+                    <li><a href="study.html?level=postgraduate">Postgraduate</a></li>
+                    <li><a href="study.html?level=online">Online &amp; Flexible</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Research</h3>
+                <ul>
+                    <li><a href="research.html">Research Areas</a></li>
+                    <li><a href="research.html#institutes">Institutes</a></li>
+                    <li><a href="research.html#funding">Funding</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
         </div>
 
-        <div class="footer-col">
-            <h3>Research</h3>
-            <ul>
-                <li><a href="research.html">Research Areas</a></li>
-                <li><a href="research.html#institutes">Institutes</a></li>
-                <li><a href="research.html#funding">Funding</a></li>
-            </ul>
+        <div class="footer-creators">
+            <div class="footer-creators-title">
+                <span>Designed &amp; Developed By</span>
+            </div>
+            <div class="footer-creators-list">
+                <a class="creator-card" href="#">
+                    <span class="creator-avatar">BS</span>
+                    <div class="creator-info">
+                        <strong>Binit Shilpakar</strong>
+                        <small>something &amp; something</small>
+                    </div>
+                </a>
+                <a class="creator-card" href="#">
+                    <span class="creator-avatar">TW</span>
+                    <div class="creator-info">
+                        <strong>TJ Woods</strong>
+                        <small>something &amp; something</small>
+                    </div>
+                </a>
+                <a class="creator-card" href="#">
+                    <span class="creator-avatar">AB</span>
+                    <div class="creator-info">
+                        <strong>Abhiman Bhattarai</strong>
+                        <small>something &amp; something</small>
+                    </div>
+                </a>
+            </div>
         </div>
 
-        <div class="footer-col">
-            <h3>Connect</h3>
-            <ul>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="partners.html">Partners</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
+        <div class="footer-bottom">
+            <p>&copy; 2026 University of Students. All rights reserved.</p>
+            <p>ABN 00 000 000 000 &nbsp;|&nbsp; CRICOS Provider 00000A</p>
         </div>
+    </footer>
 
-        <div class="footer-col">
-            <h3>Legal</h3>
-            <ul>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
-                <li><a href="#">Accessibility</a></li>
-            </ul>
-        </div>
-
-    </div>
-
-    <!-- Creator Section -->
-    <div class="footer-creators">
-
-        <div class="footer-creators-title">
-            <span>Designed &amp; Developed By</span>
-        </div>
-
-        <div class="footer-creators-list">
-
-            <a class="creator-card" href="#">
-                <span class="creator-avatar">BS</span>
-                <div class="creator-info">
-                    <strong>Binit Shilpakar</strong>
-                    <small>something &amp; something</small>
-                </div>
-            </a>
-
-            <a class="creator-card" href="#">
-                <span class="creator-avatar">TW</span>
-                <div class="creator-info">
-                    <strong>Travis Josh Woods</strong>
-                    <small>something &amp; something</small>
-                </div>
-            </a>
-
-            <a class="creator-card" href="#">
-                <span class="creator-avatar">AB</span>
-                <div class="creator-info">
-                    <strong>Abhiman Bhattarai</strong>
-                    <small>something &amp; something</small>
-                </div>
-            </a>
-
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        <p>&copy; 2026 University of Students. All rights reserved.</p>
-        <p>ABN 00 000 000 000 &nbsp;|&nbsp; CRICOS Provider 00000A</p>
-    </div>
-
-</footer>
-
-    <script>
-        /* Scroll-reveal */
-        var obs = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) {
-                if (e.isIntersecting) { e.target.classList.add('visible'); }
-                else { e.target.classList.remove('visible'); }
-            });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
-    </script>
+    <script src="../js/shared.js"></script>
 </body>
 </html>
