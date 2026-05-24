@@ -6,6 +6,25 @@
     <title>Research — University of Students</title>
     <meta name="description" content="World-class research at UoS Australia — from microbiology to AI and sustainability.">
     <link rel="stylesheet" href="../styles/styles2.css">
+    <style>
+                /* ---- Leadership ---- */
+        .leadership-section { padding: 72px 40px; max-width: 1140px; margin: 0 auto; }
+        .leadership-grid    { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 36px; }
+        .leader-card        { background: var(--white); border: 1px solid var(--grey-light); border-radius: 10px; overflow: hidden; transition: transform var(--transition), box-shadow var(--transition); }
+        .leader-card:hover  { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .leader-avatar      { height: 120px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--purple-dark), var(--purple-mid)); }
+        .leader-initials    { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.4rem; font-weight: 700; font-family: var(--font-heading); }
+        .leader-info        { padding: 20px; }
+        .leader-info h3     { font-size: 1rem; font-family: var(--font-body); font-weight: 700; color: var(--purple-dark); margin-bottom: 3px; }
+        .leader-role        { font-size: 0.82rem; color: var(--gold); font-weight: 600; margin-bottom: 10px; display: block; }
+        .leader-info p      { font-size: 0.85rem; color: var(--grey-dark); line-height: 1.55; }
+        @media (max-width: 900px) {
+            .leadership-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .leadership-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
@@ -161,6 +180,64 @@
                 </div>
             </div>
         </section>
+
+   <!-- Leadership -->
+    <section class="leadership-section">
+        <div class="gold-bar reveal"></div>
+        <h2 class="section-title reveal">Our Leadership</h2>
+        <p class="section-subtitle reveal reveal-delay-1">Guided by experienced academics and visionary leaders.</p>
+        <div class="leadership-grid">
+            <div class="leader-card reveal">
+                <div class="leader-avatar"><div class="leader-initials">EP</div></div>
+                <div class="leader-info">
+                    <h3>Prof. Eleanor Park</h3>
+                    <span class="leader-role">Vice-Chancellor &amp; President</span>
+                    <p>A leading environmental scientist and champion of research-led education with over 30 years in academia.</p>
+                </div>
+            </div>
+            <div class="leader-card reveal reveal-delay-1">
+                <div class="leader-avatar"><div class="leader-initials">JM</div></div>
+                <div class="leader-info">
+                    <h3>Prof. James Morley</h3>
+                    <span class="leader-role">Deputy Vice-Chancellor, Research</span>
+                    <p>Nationally recognised for his work in quantum computing and driving UoS to its #1 grant ranking.</p>
+                </div>
+            </div>
+            <div class="leader-card reveal reveal-delay-2">
+                <div class="leader-avatar"><div class="leader-initials">AN</div></div>
+                <div class="leader-info">
+                    <h3>Dr. Amara Nwosu</h3>
+                    <span class="leader-role">Deputy Vice-Chancellor, Academic</span>
+                    <p>Passionate about inclusive curriculum design and has led the expansion of online learning at UoS.</p>
+                </div>
+            </div>
+            <div class="leader-card reveal reveal-delay-3">
+                <div class="leader-avatar"><div class="leader-initials">TC</div></div>
+                <div class="leader-info">
+                    <h3>Mr. Thomas Chen</h3>
+                    <span class="leader-role">Chief Financial Officer</span>
+                    <p>Oversees the university's $1.2B annual budget and leads the infrastructure modernisation program.</p>
+                </div>
+            </div>
+            <div class="leader-card reveal reveal-delay-4">
+                <div class="leader-avatar"><div class="leader-initials">SR</div></div>
+                <div class="leader-info">
+                    <h3>Ms. Sophie Rajan</h3>
+                    <span class="leader-role">Chief Student Experience Officer</span>
+                    <p>Dedicated to student wellbeing, mental health services, and campus community programs.</p>
+                </div>
+            </div>
+            <div class="leader-card reveal reveal-delay-5">
+                <div class="leader-avatar"><div class="leader-initials">BK</div></div>
+                <div class="leader-info">
+                    <h3>Prof. Ben Kowalski</h3>
+                    <span class="leader-role">Dean of Research &amp; Innovation</span>
+                    <p>Leads cross-faculty research collaboration and UoS's global partnership strategy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
         <!-- CTA -->
         <section style="background:linear-gradient(135deg,var(--purple-dark),var(--purple-mid)); color:var(--white); text-align:center; padding:60px 40px;">
