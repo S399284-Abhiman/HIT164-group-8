@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partners — University of Students</title>
+    <link rel="stylesheet" href="styles2.css">
+    <style>
+        /* === STAT STRIP === */
+        .stat-strip {
+            background: var(--white);
+            border-bottom: 1px solid var(--grey-light);
+        }
+
+        .stat-strip-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .stat-cell {
+            text-align: center;
+            padding: 28px 16px;
+            border-right: 1px solid var(--grey-light);
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .stat-cell:last-child {
+            border-right: none;
+        }
+
+        .stat-cell.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-num {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--purple-500);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-lbl {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.1px;
+            color: var(--grey-mid);
+        }
+
+        /* === PARTNER CARDS (top 4) === */
+        .partner-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .partner-card {
+            background: var(--white);
+            border: 1px solid var(--grey-light);
+            border-radius: 8px;
+            padding: 28px 24px;
+            box-shadow: var(--shadow);
+            transition: transform var(--transition), box-shadow var(--transition);
+            cursor: pointer;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .partner-card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--purple-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .partner-card-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--purple-dark);
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .partner-card h3 {
+            font-size: 1.05rem;
+            font-family: var(--font-body);
+            font-weight: 700;
+            color: var(--purple-dark);
+            margin-bottom: 6px;
+        }
+
+        .partner-card p {
+            font-size: 0.9rem;
+            color: var(--grey-dark);
+            margin-bottom: 14px;
+        }
+
+        .card-link {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--purple-dark);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 1px;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .card-link:hover {
+            color: var(--purple-mid);
+            text-decoration: none;
+        }
+
+        /* === MAIN GRID === */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 48px;
+            padding: 60px 40px;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        /* === WAYS LIST === */
+        .ways-list {
+            list-style: none;
+        }
+
+        .ways-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--grey-light);
+        }
+
+        .ways-list li:last-child {
+            border-bottom: none;
+        }
+
+        .ways-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--off-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .ways-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--purple-dark);
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .ways-text strong {
+            display: block;
+            font-size: 0.97rem;
+            font-weight: 700;
+            color: var(--purple-dark);
+            margin-bottom: 3px;
+        }
+
+        .ways-text span {
+            color: var(--grey-dark);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* === SIDEBAR === */
+        .partners-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-img {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--grey-light);
+            height: 220px;
+        }
+
+        .sidebar-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            display: block;
+        }
+
+        .sidebar-logos {
+            background: var(--off-white);
+            border-radius: 8px;
+            padding: 22px;
+            border: 1px solid var(--grey-light);
+        }
+
+        .sidebar-logos h3 {
+            font-size: 1rem;
+            font-family: var(--font-body);
+            font-weight: 700;
+            color: var(--purple-dark);
+            margin-bottom: 14px;
+        }
+
+        .logo-pill-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .logo-pill {
+            background: var(--white);
+            border: 1px solid var(--grey-light);
+            border-radius: 6px;
+            padding: 10px 12px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--purple-400);
+            text-align: center;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .logo-pill:hover {
+            border-color: var(--purple-300);
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar-contact {
+            background: var(--purple-dark);
+            border-radius: 8px;
+            padding: 22px;
+        }
+
+        .sidebar-contact h3 {
+            color: var(--white);
+            font-size: 0.95rem;
+            font-family: var(--font-body);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .sidebar-contact p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .sidebar-contact a {
+            color: var(--gold);
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .sidebar-contact a:hover {
+            color: var(--white);
+        }
+
+        /* === INDUSTRY TABS === */
+        .industry-section {
+            background: var(--off-white);
+            padding: 60px 40px;
+        }
+
+        .industry-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        .ind-tabs {
+            display: flex;
+            gap: 8px;
+            margin: 24px 0 28px;
+            flex-wrap: wrap;
+        }
+
+        .ind-tab {
+            background: var(--white);
+            border: 1px solid var(--grey-light);
+            border-radius: 4px;
+            padding: 8px 20px;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--purple-dark);
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        .ind-tab:hover {
+            background: var(--purple-50);
+            border-color: var(--purple-300);
+        }
+
+        .ind-tab.active {
+            background: var(--purple-dark);
+            color: var(--white);
+            border-color: var(--purple-dark);
+        }
+
+        .ind-panel {
+            display: none;
+        }
+
+        .ind-panel.active {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .ind-card {
+            background: var(--white);
+            border: 1px solid var(--grey-light);
+            border-radius: 8px;
+            padding: 22px 20px;
+        }
+
+        .ind-card h3 {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--purple-dark);
+            margin-bottom: 6px;
+        }
+
+        .ind-card p {
+            font-size: 0.85rem;
+            color: var(--grey-dark);
+            line-height: 1.65;
+        }
+
+        /* === MODAL === */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-box {
+            background: var(--white);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 520px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: slideUp 0.3s ease forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: var(--purple-dark);
+            padding: 22px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            color: var(--white);
+            font-size: 1.25rem;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.6rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0 4px;
+            transition: color var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--white);
+        }
+
+        .modal-body {
+            padding: 28px;
+        }
+
+        .modal-body p {
+            color: var(--grey-dark);
+            font-size: 0.93rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--grey-dark);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid var(--grey-light);
+            border-radius: 5px;
+            font-size: 0.95rem;
+            font-family: var(--font-body);
+            color: var(--text);
+            outline: none;
+            transition: border-color var(--transition);
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--purple-dark);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .modal-footer {
+            padding: 16px 28px;
+            background: var(--off-white);
+            border-top: 1px solid var(--grey-light);
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .success-msg {
+            text-align: center;
+            padding: 36px 20px;
+        }
+
+        .success-msg .check-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #e6f4ea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+        }
+
+        .success-msg .check-circle svg {
+            width: 32px;
+            height: 32px;
+            stroke: #2E8B57;
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .success-msg h3 {
+            color: var(--purple-dark);
+            margin-bottom: 8px;
+        }
+
+        .success-msg p {
+            color: var(--grey-dark);
+            font-size: 0.93rem;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 900px) {
+            .partners-grid {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+            }
+
+            .partner-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat-strip-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat-cell {
+                border-right: none;
+                border-bottom: 1px solid var(--grey-light);
+            }
+
+            .ind-panel.active {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .partner-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .ind-panel.active {
+                grid-template-columns: 1fr;
+            }
+
+            .industry-section,
+            .faq-section {
+                padding: 40px 20px;
+            }
+
+            div[style*="padding:40px 40px 0"] {
+                padding: 20px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- NAVBAR -->
+    <header class="navbar" id="mainNav">
+        <a class="nav-logo" href="#">UoS <span style="color:var(--gold)">Australia</span></a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Study</a></li>
+                <li><a href="#">Research</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#" class="active">Partners</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+        <a href="#">Home</a><span>›</span>Partners
+    </div>
+
+    <!-- HERO -->
+    <section class="page-hero" id="main">
+        <h1 class="hero-reveal">Partners &amp; Community</h1>
+        <p class="hero-reveal hero-reveal-delay-1">We collaborate with industry, government, and community to turn bold
+            ideas into real-world impact — locally, nationally, and globally.</p>
+    </section>
+
+    <!-- STAT STRIP -->
+    <div class="stat-strip">
+        <div class="stat-strip-inner">
+            <div class="stat-cell"><span class="stat-num" data-target="200" data-suffix="+">200+</span><span
+                    class="stat-lbl">Industry Partners</span></div>
+            <div class="stat-cell"><span class="stat-num" data-target="40" data-suffix="+">40+</span><span
+                    class="stat-lbl">Countries Reached</span></div>
+            <div class="stat-cell"><span class="stat-num" data-prefix="$" data-target="85"
+                    data-suffix="M">$85M</span><span class="stat-lbl">Research Funding</span></div>
+            <div class="stat-cell"><span class="stat-num" data-target="500" data-suffix="+">500+</span><span
+                    class="stat-lbl">Graduate Placements</span></div>
+        </div>
+    </div>
+
+    <!-- TOP 4 CARDS -->
+    <div style="max-width:1140px; margin:0 auto; padding:40px 40px 0;">
+        <div class="partner-cards">
+            <div class="partner-card reveal">
+                <div class="partner-card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                </div>
+                <h3>Partner Enquiry</h3>
+                <p>Interested in collaborating? Use the enquiry button below and our partnerships team will be in touch
+                    within two business days.</p>
+                <span class="card-link">See ways to partner &rsaquo;</span>
+            </div>
+            <div class="partner-card reveal reveal-delay-1">
+                <div class="partner-card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                </div>
+                <h3>Research Collaboration</h3>
+                <p>Co-invest in research with our academic experts. Access world-class facilities, IP agreements, and
+                    grant co-funding.</p>
+                <span class="card-link">Explore research &rsaquo;</span>
+            </div>
+            <div class="partner-card reveal reveal-delay-2">
+                <div class="partner-card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </div>
+                <h3>Student Placements</h3>
+                <p>Host work-integrated learning students and interns from across our faculties and contribute to
+                    graduate development.</p>
+                <span class="card-link">Host a student &rsaquo;</span>
+            </div>
+            <div class="partner-card reveal reveal-delay-3" onclick="openModal('giving')">
+                <div class="partner-card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                    </svg>
+                </div>
+                <h3>Philanthropic Giving</h3>
+                <p>Support scholarships, research chairs, or facility development. Shape the next generation of
+                    graduates and innovators.</p>
+                <span class="card-link">Give to UoS &rsaquo;</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN GRID: WAYS + SIDEBAR -->
+    <div class="partners-grid">
+        <div>
+            <div class="gold-bar reveal"></div>
+            <h2 class="section-title reveal">How We Work Together</h2>
+            <p class="section-subtitle reveal reveal-delay-1">Multiple pathways to suit your organisation's goals</p>
+
+            <ul class="ways-list">
+                <li class="reveal">
+                    <div class="ways-icon"><svg viewBox="0 0 24 24">
+                            <path d="M12 20h9" />
+                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
+                        </svg></div>
+                    <div class="ways-text"><strong>Contract Research</strong><span>Commission targeted research and
+                            consulting from our specialist teams to solve specific business or policy challenges.</span>
+                    </div>
+                </li>
+                <li class="reveal reveal-delay-1">
+                    <div class="ways-icon"><svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        </svg></div>
+                    <div class="ways-text"><strong>Global Partnerships</strong><span>Join our international network of
+                            universities and organisations to tackle global challenges through cross-border
+                            collaboration.</span></div>
+                </li>
+                <li class="reveal reveal-delay-2">
+                    <div class="ways-icon"><svg viewBox="0 0 24 24">
+                            <rect x="2" y="7" width="20" height="14" rx="2" />
+                            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                        </svg></div>
+                    <div class="ways-text"><strong>Sponsorships &amp; Events</strong><span>Sponsor UoS events,
+                            competitions, and programs to connect your brand with our community of students,
+                            researchers, and alumni.</span></div>
+                </li>
+                <li class="reveal reveal-delay-3">
+                    <div class="ways-icon"><svg viewBox="0 0 24 24">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                        </svg></div>
+                    <div class="ways-text"><strong>Curriculum Co-design</strong><span>Work with our academic teams to
+                            co-design industry-relevant curricula, guest lecture programs, and capstone projects.</span>
+                    </div>
+                </li>
+                <li class="reveal reveal-delay-4">
+                    <div class="ways-icon"><svg viewBox="0 0 24 24">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                        </svg></div>
+                    <div class="ways-text"><strong>Clinical &amp; Field Trials</strong><span>Partner with our health and
+                            science faculties to run clinical research and access patient-centred research
+                            infrastructure.</span></div>
+                </li>
+            </ul>
+
+            <br>
+            <button class="btn btn-primary reveal" onclick="openModal('enquiry')">Make a Partnership Enquiry</button>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="partners-sidebar reveal reveal-delay-1">
+            <div class="sidebar-img">
+                <img src="partnership.jpg" alt="UoS Partnership">
+            </div>
+            <div class="sidebar-logos">
+                <h3>Some of Our Partners</h3>
+                <div class="logo-pill-grid">
+                    <div class="logo-pill">Queensland Government</div>
+                    <div class="logo-pill">CSIRO</div>
+                    <div class="logo-pill">Queensland Health</div>
+                    <div class="logo-pill">Brisbane City Council</div>
+                    <div class="logo-pill">QUT</div>
+                    <div class="logo-pill">Griffith University</div>
+                    <div class="logo-pill">Queensland Rail</div>
+                    <div class="logo-pill">Sunwater</div>
+                </div>
+            </div>
+            <div class="sidebar-contact">
+                <h3>Partnerships Office</h3>
+                <p>Our team is ready to help you find the right collaboration model for your organisation.</p>
+                <a href="mailto:partnerships@uos.edu.au">partnerships@uos.edu.au</a>
+                <a href="tel:+61889461235">+61 7 3000 1235</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- INDUSTRY TABS -->
+    <section class="industry-section">
+        <div class="industry-inner">
+            <div class="gold-bar reveal"></div>
+            <h2 class="section-title reveal">Industry Portfolios</h2>
+            <p class="section-subtitle reveal reveal-delay-1">We partner across a broad range of sectors</p>
+            <div class="ind-tabs reveal reveal-delay-1">
+                <button class="ind-tab active" onclick="switchInd('health', this)">Health &amp; Medical</button>
+                <button class="ind-tab" onclick="switchInd('tech', this)">Technology</button>
+                <button class="ind-tab" onclick="switchInd('env', this)">Environment</button>
+                <button class="ind-tab" onclick="switchInd('gov', this)">Government</button>
+            </div>
+            <div id="ind-health" class="ind-panel active">
+                <div class="ind-card">
+                    <h3>🏥 Clinical Trials</h3>
+                    <p>Partner with our health faculties to run clinical research and access patient-centred
+                        infrastructure across the NT.</p>
+                </div>
+                <div class="ind-card">
+                    <h3>💊 Pharmaceutical Research</h3>
+                    <p>Co-develop drug discovery and health intervention programs with our biomedical science teams.</p>
+                </div>
+                <div class="ind-card">
+                    <h3>🧬 Indigenous Health</h3>
+                    <p>Collaborate on community-led health research focused on improving outcomes for First Nations
+                        communities.</p>
+                </div>
+            </div>
+            <div id="ind-tech" class="ind-panel">
+                <div class="ind-card">
+                    <h3>🤖 AI &amp; Machine Learning</h3>
+                    <p>Work with our computer science experts on applied AI, data analytics, and intelligent systems
+                        development.</p>
+                </div>
+                <div class="ind-card">
+                    <h3>🔐 Cybersecurity</h3>
+                    <p>Partner on security research, vulnerability assessments, and workforce training in digital
+                        resilience.</p>
+                </div>
+                <div class="ind-card">
+                    <h3>📡 IoT &amp; Connectivity</h3>
+                    <p>Collaborate on connected infrastructure, remote sensing, and smart campus technologies.</p>
+                </div>
+            </div>
+            <div id="ind-env" class="ind-panel">
+                <div class="ind-card">
+                    <h3>🌿 Sustainability Research</h3>
+                    <p>Co-invest in climate, biodiversity, and clean energy research aligned with Australia's net-zero
+                        goals.</p>
+                </div>
+                <div class="ind-card">
+                    <h3>💧 Water &amp; Land Management</h3>
+                    <p>Partner with our environmental scientists on NT water security and land rehabilitation projects.
+                    </p>
+                </div>
+                <div class="ind-card">
+                    <h3>☀️ Renewable Energy</h3>
+                    <p>Collaborate on solar, hydrogen, and grid innovation through our Engineering faculty.</p>
+                </div>
+            </div>
+            <div id="ind-gov" class="ind-panel">
+                <div class="ind-card">
+                    <h3>📊 Policy Research</h3>
+                    <p>Commission evidence-based policy analysis and program evaluations from our social science and law
+                        experts.</p>
+                </div>
+                <div class="ind-card">
+                    <h3>🏛️ Public Sector Training</h3>
+                    <p>Deliver tailored professional development programs for government employees at all levels.</p>
+                </div>
+                <div class="ind-card">
+                    <h3>🌐 Regional Development</h3>
+                    <p>Partner on projects that strengthen regional communities, economies, and infrastructure across
+                        the NT.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Study</h3>
+                <ul>
+                    <li><a href="#">Programs</a></li>
+                    <li><a href="#">Undergraduate</a></li>
+                    <li><a href="#">Postgraduate</a></li>
+                    <li><a href="#">Online &amp; Flexible</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Research</h3>
+                <ul>
+                    <li><a href="#">Research Areas</a></li>
+                    <li><a href="#">Institutes</a></li>
+                    <li><a href="#">Funding</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Partners</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-creators-list">
+
+            <a class="creator-card" href="#">
+                <span class="creator-avatar">BS</span>
+                <div class="creator-info">
+                    <strong>Binit Shilpakar</strong>
+                    <small>something &amp; something</small>
+                </div>
+            </a>
+
+            <a class="creator-card" href="#">
+                <span class="creator-avatar">TW</span>
+                <div class="creator-info">
+                    <strong>TJ Woods</strong>
+                    <small>something &amp; something</small>
+                </div>
+            </a>
+
+            <a class="creator-card" href="#">
+                <span class="creator-avatar">AB</span>
+                <div class="creator-info">
+                    <strong>Abhiman Bhattarai</strong>
+                    <small>something &amp; something</small>
+                </div>
+            </a>
+
+        </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 University of Students. All rights reserved.</p>
+            <p>ABN 00 000 000 000 &nbsp;|&nbsp; CRICOS Provider 00000A</p>
+        </div>
+    </footer>
+
+    <!-- MODALS -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+        <div class="modal-box" id="modalBox">
+
+            <!-- ENQUIRY FORM -->
+            <div id="modalEnquiry">
+                <div class="modal-header">
+                    <h2>Partnership Enquiry</h2><button class="modal-close" onclick="closeModal()">&#215;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Tell us about your organisation and what you're looking to achieve. We'll be in touch within two
+                        business days.</p>
+                    <div class="form-row">
+                        <div class="form-group"><label for="firstName">First Name *</label><input type="text"
+                                id="firstName" placeholder="Jane"></div>
+                        <div class="form-group"><label for="lastName">Last Name *</label><input type="text"
+                                id="lastName" placeholder="Smith"></div>
+                    </div>
+                    <div class="form-group"><label for="orgName">Organisation *</label><input type="text" id="orgName"
+                            placeholder="Your organisation name"></div>
+                    <div class="form-group"><label for="email">Email Address *</label><input type="email" id="email"
+                            placeholder="jane.smith@org.com"></div>
+                    <div class="form-group">
+                        <label for="partnerType">Partnership Type *</label>
+                        <select id="partnerType">
+                            <option value="">— Select a type —</option>
+                            <option>Research Collaboration</option>
+                            <option>Student Placements</option>
+                            <option>Contract Research</option>
+                            <option>Philanthropic Giving</option>
+                            <option>Sponsorship &amp; Events</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label for="message">Message *</label><textarea id="message"
+                            placeholder="Tell us about your goals and how we can help…"></textarea></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+                    <button class="btn btn-primary" onclick="submitForm()">Submit Enquiry</button>
+                </div>
+            </div>
+
+            <!-- RESEARCH INFO -->
+            <div id="modalResearch" style="display:none;">
+                <div class="modal-header">
+                    <h2>Research Collaboration</h2><button class="modal-close" onclick="closeModal()">&#215;</button>
+                </div>
+                <div class="modal-body">
+                    <p>UoS Australia offers several research collaboration models depending on your goals and investment
+                        level.</p>
+                    <ul class="ways-list">
+                        <li>
+                            <div class="ways-icon"><svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <line x1="12" y1="8" x2="12" y2="12" />
+                                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                                </svg></div>
+                            <div class="ways-text"><strong>ARC Linkage Grants</strong><span>Co-funded government grants
+                                    for industry-academic research. We can help you apply.</span></div>
+                        </li>
+                        <li>
+                            <div class="ways-icon"><svg viewBox="0 0 24 24">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" />
+                                    <path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5" />
+                                </svg></div>
+                            <div class="ways-text"><strong>Industry-Funded Projects</strong><span>Commission a research
+                                    team directly. IP arrangements are negotiated upfront.</span></div>
+                        </li>
+                        <li>
+                            <div class="ways-icon"><svg viewBox="0 0 24 24">
+                                    <path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg></div>
+                            <div class="ways-text"><strong>CRC Schemes</strong><span>Join a Cooperative Research Centre
+                                    to tackle long-term industry challenges with multiple partners.</span></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer"><button class="btn btn-primary"
+                        onclick="closeModal(); openModal('enquiry')">Make an Enquiry</button></div>
+            </div>
+
+            <!-- PLACEMENT INFO -->
+            <div id="modalPlacement" style="display:none;">
+                <div class="modal-header">
+                    <h2>Student Placements</h2><button class="modal-close" onclick="closeModal()">&#215;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Hosting a UoS student placement is straightforward. Here's how it works:</p>
+                    <ul class="ways-list">
+                        <li>
+                            <div class="ways-icon"><svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg></div>
+                            <div class="ways-text"><strong>Step 1 — Register</strong><span>Submit a placement
+                                    opportunity through our Work Integrated Learning office.</span></div>
+                        </li>
+                        <li>
+                            <div class="ways-icon"><svg viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                </svg></div>
+                            <div class="ways-text"><strong>Step 2 — Matching</strong><span>We match you with students
+                                    from relevant programs based on skills and project fit.</span></div>
+                        </li>
+                        <li>
+                            <div class="ways-icon"><svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></div>
+                            <div class="ways-text"><strong>Step 3 — Onboard</strong><span>We handle the agreements. You
+                                    focus on giving students a meaningful experience.</span></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer"><button class="btn btn-primary"
+                        onclick="closeModal(); openModal('enquiry')">Register as a Host</button></div>
+            </div>
+
+            <!-- GIVING INFO -->
+            <div id="modalGiving" style="display:none;">
+                <div class="modal-header">
+                    <h2>Philanthropic Giving</h2><button class="modal-close" onclick="closeModal()">&#215;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Your investment in UoS Australia creates lasting impact. Giving options include:</p>
+                    <ul class="ways-list">
+                        <li>
+                            <div class="ways-icon"><svg viewBox="0 0 24 24">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" />
+                                </svg></div>
+                            <div class="ways-text"><strong>Student Scholarships</strong><span>Fund access to education
+                                    for talented students who need financial support.</span></div>
+                        </li>
+                        <li>
+                            <div class="ways-icon"><svg viewBox="0 0 24 24">
+                                    <circle cx="11" cy="11" r="8" />
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                </svg></div>
+                            <div class="ways-text"><strong>Research Chairs</strong><span>Endow a named professorship in
+                                    an area aligned with your organisation's mission.</span></div>
+                        </li>
+                        <li>
+                            <div class="ways-icon"><svg viewBox="0 0 24 24">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                </svg></div>
+                            <div class="ways-text"><strong>Facility &amp; Equipment</strong><span>Fund labs, equipment,
+                                    or spaces that bear your organisation's name for decades.</span></div>
+                        </li>
+                    </ul>
+                    <p style="margin-top:14px; font-size:0.85rem; color:var(--grey-mid);">All gifts to UoS Australia are
+                        tax-deductible under the Australian Tax Act.</p>
+                </div>
+                <div class="modal-footer"><button class="btn btn-primary"
+                        onclick="closeModal(); openModal('enquiry')">Discuss a Gift</button></div>
+            </div>
+
+            <!-- SUCCESS -->
+            <div id="modalSuccess" style="display:none;">
+                <div class="modal-header">
+                    <h2>Enquiry Sent</h2><button class="modal-close" onclick="closeModal()">&#215;</button>
+                </div>
+                <div class="success-msg">
+                    <div class="check-circle"><svg viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg></div>
+                    <h3>Thank You</h3>
+                    <p>Your partnership enquiry has been received. A member of our team will be in touch within two
+                        business days.</p>
+                    <br>
+                    <button class="btn btn-primary" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        /* NAV TOGGLE */
+        document.getElementById('navToggle').addEventListener('click', function () {
+            this.classList.toggle('open');
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        /* NAV SHRINK */
+        window.addEventListener('scroll', function () {
+            document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        /* INDUSTRY TABS */
+        function switchInd(name, btn) {
+            document.querySelectorAll('.ind-panel').forEach(function (p) { p.classList.remove('active'); });
+            document.querySelectorAll('.ind-tab').forEach(function (b) { b.classList.remove('active'); });
+            document.getElementById('ind-' + name).classList.add('active');
+            btn.classList.add('active');
+        }
+
+
+        /* MODAL */
+        function openModal(type) {
+            ['modalEnquiry', 'modalResearch', 'modalPlacement', 'modalGiving', 'modalSuccess'].forEach(function (id) {
+                document.getElementById(id).style.display = 'none';
+            });
+            var map = { enquiry: 'modalEnquiry', research: 'modalResearch', placement: 'modalPlacement', giving: 'modalGiving' };
+            document.getElementById(map[type] || 'modalEnquiry').style.display = 'block';
+            var overlay = document.getElementById('modalOverlay');
+            overlay.style.display = 'flex';
+            setTimeout(function () { overlay.style.opacity = '1'; }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            var overlay = document.getElementById('modalOverlay');
+            overlay.style.opacity = '0';
+            setTimeout(function () { overlay.style.display = 'none'; document.body.style.overflow = ''; }, 300);
+        }
+        function closeModalOnBg(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+        function submitForm() {
+            if (!document.getElementById('firstName').value.trim() ||
+                !document.getElementById('email').value.trim() ||
+                !document.getElementById('partnerType').value ||
+                !document.getElementById('message').value.trim()) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            document.getElementById('modalEnquiry').style.display = 'none';
+            document.getElementById('modalSuccess').style.display = 'block';
+        }
+
+        /* SCROLL REVEAL */
+        var revealObs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });
+
+        /* STAT COUNTERS */
+        var statObs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    var el = e.target.querySelector('.stat-num');
+                    var target = parseInt(el.dataset.target, 10);
+                    var prefix = el.dataset.prefix || '';
+                    var suffix = el.dataset.suffix || '';
+                    var start = null;
+                    (function step(ts) {
+                        if (!start) start = ts;
+                        var p = Math.min((ts - start) / 1200, 1);
+                        el.textContent = prefix + Math.round((1 - Math.pow(1 - p, 3)) * target).toLocaleString() + suffix;
+                        if (p < 1) requestAnimationFrame(step);
+                    })(performance.now());
+                    statObs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.stat-cell').forEach(function (c) { statObs.observe(c); });
+    </script>
+
+</body>
+
+</html>
