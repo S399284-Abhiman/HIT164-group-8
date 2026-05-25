@@ -205,19 +205,16 @@
             overflow: hidden;
             box-shadow: var(--shadow-lg);
             aspect-ratio: 4/3;
-            background: var(--purple-300);
-            position: relative;
-            margin: 0;
         }
 
-        .campus-img::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=900&q=80') center/cover no-repeat;
-            opacity: 0.75;
+        .campus-img img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            display: block;
         }
-
+            
         .campus-img figcaption {
             position: absolute;
             bottom: 0;
@@ -482,23 +479,14 @@
             border-radius: 8px;
             overflow: hidden;
             aspect-ratio: 16/10;
-            background: #3b1a1a;
             position: relative;
         }
 
-        .recon-img::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80') center/cover no-repeat;
-            opacity: 0.6;
-        }
-
-        .recon-img::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(90, 40, 10, 0.5), rgba(180, 80, 20, 0.3));
+        .recon-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .recon-badge {
@@ -828,6 +816,7 @@
                 </div>
                 <div class="fade fade-d2">
                     <figure class="campus-img">
+                        <img src="campus.jpg" alt="UoS Australia main campus">
                         <figcaption>UoS Australia main campus — a hub of innovation and discovery since 1962.
                         </figcaption>
                     </figure>
@@ -990,6 +979,7 @@
             <div class="recon-grid">
                 <div class="fade">
                     <div class="recon-img">
+                        <img src="reconciliation.jpg" alt="Aboriginal landscape">
                         <div class="recon-badge">
                             <p>UoS acknowledges the Traditional Custodians<br>of the lands on which our campuses stand.
                             </p>
